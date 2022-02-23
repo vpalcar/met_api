@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:optiapi/optiapi.dart';
+import 'package:goopti_api/goopti_api.dart';
 
 
 /// tests for AuthenticationControllerApi
 void main() {
-  final instance = Optiapi().getAuthenticationControllerApi();
+  final instance = GooptiApi().getAuthenticationControllerApi();
 
   group(AuthenticationControllerApi, () {
-    //Future<OptiAuthorizationResponse> authorize(OptiAuthorizationRequest optiAuthorizationRequest) async
+    //Future<AuthorizationResponse> authorize(AuthorizationRequest authorizationRequest) async
     test('test authorize', () async {
       // TODO
     });
 
-    //Future<String> revoke(OptiTokenRequest optiTokenRequest) async
+    //Future<String> revoke(TokenRequest tokenRequest) async
     test('test revoke', () async {
       // TODO
     });
 
-    //Future<OptiTokenResponse> token(OptiTokenRequest optiTokenRequest) async
+    //Future<TokenResponse> token(TokenRequest tokenRequest) async
     test('test token', () async {
       // TODO
     });

@@ -7,17 +7,17 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(OptiAuthorizationRequest.serializer)
-      ..add(OptiAuthorizationResponse.serializer)
-      ..add(OptiErrorInfo.serializer)
-      ..add(OptiInlineObject.serializer)
-      ..add(OptiInlineObject1.serializer)
-      ..add(OptiInlineObject2.serializer)
-      ..add(OptiTokenRequest.serializer)
-      ..add(OptiTokenRequestGrantTypeEnum.serializer)
-      ..add(OptiTokenResponse.serializer)
-      ..add(OptiUserProfileRequest.serializer)
-      ..add(OptiUserProfileResponse.serializer))
+      ..add(AuthorizationRequest.serializer)
+      ..add(AuthorizationResponse.serializer)
+      ..add(ErrorInfo.serializer)
+      ..add(InlineObject.serializer)
+      ..add(InlineObject1.serializer)
+      ..add(InlineObject2.serializer)
+      ..add(TokenRequest.serializer)
+      ..add(TokenRequestGrantTypeEnum.serializer)
+      ..add(TokenResponse.serializer)
+      ..add(UserProfileRequest.serializer)
+      ..add(UserProfileResponse.serializer))
     .build();
 
 // ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

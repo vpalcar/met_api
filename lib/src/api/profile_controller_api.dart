@@ -7,12 +7,12 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:optiapi/src/model/opti_error_info.dart';
-import 'package:optiapi/src/model/opti_inline_object.dart';
-import 'package:optiapi/src/model/opti_inline_object1.dart';
-import 'package:optiapi/src/model/opti_inline_object2.dart';
-import 'package:optiapi/src/model/opti_user_profile_request.dart';
-import 'package:optiapi/src/model/opti_user_profile_response.dart';
+import 'package:goopti_api/src/model/error_info.dart';
+import 'package:goopti_api/src/model/inline_object.dart';
+import 'package:goopti_api/src/model/inline_object1.dart';
+import 'package:goopti_api/src/model/inline_object2.dart';
+import 'package:goopti_api/src/model/user_profile_request.dart';
+import 'package:goopti_api/src/model/user_profile_response.dart';
 
 class ProfileControllerApi {
 
@@ -33,9 +33,9 @@ class ProfileControllerApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [OptiUserProfileResponse] as data
+  /// Returns a [Future] containing a [Response] with a [UserProfileResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<OptiUserProfileResponse>> getUserProfile({ 
+  Future<Response<UserProfileResponse>> getUserProfile({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -64,14 +64,14 @@ class ProfileControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    OptiUserProfileResponse _responseData;
+    UserProfileResponse _responseData;
 
     try {
-      const _responseType = FullType(OptiUserProfileResponse);
+      const _responseType = FullType(UserProfileResponse);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as OptiUserProfileResponse;
+      ) as UserProfileResponse;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -82,7 +82,7 @@ class ProfileControllerApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<OptiUserProfileResponse>(
+    return Response<UserProfileResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -166,7 +166,7 @@ class ProfileControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiUserProfileRequest] 
+  /// * [userProfileRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -177,7 +177,7 @@ class ProfileControllerApi {
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<String>> updateUserProfile({ 
-    required OptiUserProfileRequest optiUserProfileRequest,
+    required UserProfileRequest userProfileRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -202,8 +202,8 @@ class ProfileControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiUserProfileRequest);
-      _bodyData = _serializers.serialize(optiUserProfileRequest, specifiedType: _type);
+      const _type = FullType(UserProfileRequest);
+      _bodyData = _serializers.serialize(userProfileRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(
@@ -255,7 +255,7 @@ class ProfileControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiInlineObject2] 
+  /// * [inlineObject2] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -266,7 +266,7 @@ class ProfileControllerApi {
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<String>> uploadDriverLicencePhoto({ 
-    OptiInlineObject2? optiInlineObject2,
+    InlineObject2? inlineObject2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -291,8 +291,8 @@ class ProfileControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiInlineObject2);
-      _bodyData = optiInlineObject2 == null ? null : _serializers.serialize(optiInlineObject2, specifiedType: _type);
+      const _type = FullType(InlineObject2);
+      _bodyData = inlineObject2 == null ? null : _serializers.serialize(inlineObject2, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(
@@ -344,7 +344,7 @@ class ProfileControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiInlineObject1] 
+  /// * [inlineObject1] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -355,7 +355,7 @@ class ProfileControllerApi {
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<String>> uploadIdPhoto({ 
-    OptiInlineObject1? optiInlineObject1,
+    InlineObject1? inlineObject1,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -380,8 +380,8 @@ class ProfileControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiInlineObject1);
-      _bodyData = optiInlineObject1 == null ? null : _serializers.serialize(optiInlineObject1, specifiedType: _type);
+      const _type = FullType(InlineObject1);
+      _bodyData = inlineObject1 == null ? null : _serializers.serialize(inlineObject1, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(
@@ -433,7 +433,7 @@ class ProfileControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiInlineObject] 
+  /// * [inlineObject] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -444,7 +444,7 @@ class ProfileControllerApi {
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<String>> uploadUserProfilePhoto({ 
-    OptiInlineObject? optiInlineObject,
+    InlineObject? inlineObject,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -469,8 +469,8 @@ class ProfileControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiInlineObject);
-      _bodyData = optiInlineObject == null ? null : _serializers.serialize(optiInlineObject, specifiedType: _type);
+      const _type = FullType(InlineObject);
+      _bodyData = inlineObject == null ? null : _serializers.serialize(inlineObject, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(

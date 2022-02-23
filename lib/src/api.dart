@@ -4,22 +4,22 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:optiapi/src/serializers.dart';
-import 'package:optiapi/src/auth/api_key_auth.dart';
-import 'package:optiapi/src/auth/basic_auth.dart';
-import 'package:optiapi/src/auth/bearer_auth.dart';
-import 'package:optiapi/src/auth/oauth.dart';
-import 'package:optiapi/src/api/api_controller_api.dart';
-import 'package:optiapi/src/api/authentication_controller_api.dart';
-import 'package:optiapi/src/api/profile_controller_api.dart';
+import 'package:goopti_api/src/serializers.dart';
+import 'package:goopti_api/src/auth/api_key_auth.dart';
+import 'package:goopti_api/src/auth/basic_auth.dart';
+import 'package:goopti_api/src/auth/bearer_auth.dart';
+import 'package:goopti_api/src/auth/oauth.dart';
+import 'package:goopti_api/src/api/api_controller_api.dart';
+import 'package:goopti_api/src/api/authentication_controller_api.dart';
+import 'package:goopti_api/src/api/profile_controller_api.dart';
 
-class Optiapi {
-  static const String basePath = r'http://localhost:8080';
+class GooptiApi {
+  static const String basePath = r'https://api.staging.goopti.com/user-service';
 
   final Dio dio;
   final Serializers serializers;
 
-  Optiapi({
+  GooptiApi({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,

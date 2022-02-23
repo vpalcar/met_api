@@ -1,11 +1,11 @@
-# optiapi.api.ApiControllerApi
+# goopti_api.api.ApiControllerApi
 
 ## Load the API package
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 ```
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.staging.goopti.com/user-service*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,9 +20,9 @@ Method | HTTP request | Description
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getApiControllerApi();
+final api = GooptiApi().getApiControllerApi();
 
 try {
     final response = api.driverInfo();
@@ -57,9 +57,9 @@ No authorization required
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getApiControllerApi();
+final api = GooptiApi().getApiControllerApi();
 
 try {
     final response = api.info();

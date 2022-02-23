@@ -1,11 +1,11 @@
-# optiapi.api.AuthenticationControllerApi
+# goopti_api.api.AuthenticationControllerApi
 
 ## Load the API package
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 ```
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.staging.goopti.com/user-service*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,19 +15,19 @@ Method | HTTP request | Description
 
 
 # **authorize**
-> OptiAuthorizationResponse authorize(optiAuthorizationRequest)
+> AuthorizationResponse authorize(authorizationRequest)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getAuthenticationControllerApi();
-final OptiAuthorizationRequest optiAuthorizationRequest = ; // OptiAuthorizationRequest | 
+final api = GooptiApi().getAuthenticationControllerApi();
+final AuthorizationRequest authorizationRequest = ; // AuthorizationRequest | 
 
 try {
-    final response = api.authorize(optiAuthorizationRequest);
+    final response = api.authorize(authorizationRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling AuthenticationControllerApi->authorize: $e\n');
@@ -38,11 +38,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiAuthorizationRequest** | [**OptiAuthorizationRequest**](OptiAuthorizationRequest.md)|  | 
+ **authorizationRequest** | [**AuthorizationRequest**](AuthorizationRequest.md)|  | 
 
 ### Return type
 
-[**OptiAuthorizationResponse**](OptiAuthorizationResponse.md)
+[**AuthorizationResponse**](AuthorizationResponse.md)
 
 ### Authorization
 
@@ -56,19 +56,19 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **revoke**
-> String revoke(optiTokenRequest)
+> String revoke(tokenRequest)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getAuthenticationControllerApi();
-final OptiTokenRequest optiTokenRequest = ; // OptiTokenRequest | 
+final api = GooptiApi().getAuthenticationControllerApi();
+final TokenRequest tokenRequest = ; // TokenRequest | 
 
 try {
-    final response = api.revoke(optiTokenRequest);
+    final response = api.revoke(tokenRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling AuthenticationControllerApi->revoke: $e\n');
@@ -79,7 +79,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiTokenRequest** | [**OptiTokenRequest**](OptiTokenRequest.md)|  | 
+ **tokenRequest** | [**TokenRequest**](TokenRequest.md)|  | 
 
 ### Return type
 
@@ -97,19 +97,19 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **token**
-> OptiTokenResponse token(optiTokenRequest)
+> TokenResponse token(tokenRequest)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getAuthenticationControllerApi();
-final OptiTokenRequest optiTokenRequest = ; // OptiTokenRequest | 
+final api = GooptiApi().getAuthenticationControllerApi();
+final TokenRequest tokenRequest = ; // TokenRequest | 
 
 try {
-    final response = api.token(optiTokenRequest);
+    final response = api.token(tokenRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling AuthenticationControllerApi->token: $e\n');
@@ -120,11 +120,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiTokenRequest** | [**OptiTokenRequest**](OptiTokenRequest.md)|  | 
+ **tokenRequest** | [**TokenRequest**](TokenRequest.md)|  | 
 
 ### Return type
 
-[**OptiTokenResponse**](OptiTokenResponse.md)
+[**TokenResponse**](TokenResponse.md)
 
 ### Authorization
 

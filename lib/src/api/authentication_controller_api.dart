@@ -7,11 +7,11 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:optiapi/src/model/opti_authorization_request.dart';
-import 'package:optiapi/src/model/opti_authorization_response.dart';
-import 'package:optiapi/src/model/opti_error_info.dart';
-import 'package:optiapi/src/model/opti_token_request.dart';
-import 'package:optiapi/src/model/opti_token_response.dart';
+import 'package:goopti_api/src/model/authorization_request.dart';
+import 'package:goopti_api/src/model/authorization_response.dart';
+import 'package:goopti_api/src/model/error_info.dart';
+import 'package:goopti_api/src/model/token_request.dart';
+import 'package:goopti_api/src/model/token_response.dart';
 
 class AuthenticationControllerApi {
 
@@ -25,7 +25,7 @@ class AuthenticationControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiAuthorizationRequest] 
+  /// * [authorizationRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -33,10 +33,10 @@ class AuthenticationControllerApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [OptiAuthorizationResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AuthorizationResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<OptiAuthorizationResponse>> authorize({ 
-    required OptiAuthorizationRequest optiAuthorizationRequest,
+  Future<Response<AuthorizationResponse>> authorize({ 
+    required AuthorizationRequest authorizationRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -61,8 +61,8 @@ class AuthenticationControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiAuthorizationRequest);
-      _bodyData = _serializers.serialize(optiAuthorizationRequest, specifiedType: _type);
+      const _type = FullType(AuthorizationRequest);
+      _bodyData = _serializers.serialize(authorizationRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(
@@ -84,14 +84,14 @@ class AuthenticationControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    OptiAuthorizationResponse _responseData;
+    AuthorizationResponse _responseData;
 
     try {
-      const _responseType = FullType(OptiAuthorizationResponse);
+      const _responseType = FullType(AuthorizationResponse);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as OptiAuthorizationResponse;
+      ) as AuthorizationResponse;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -102,7 +102,7 @@ class AuthenticationControllerApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<OptiAuthorizationResponse>(
+    return Response<AuthorizationResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -118,7 +118,7 @@ class AuthenticationControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiTokenRequest] 
+  /// * [tokenRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -129,7 +129,7 @@ class AuthenticationControllerApi {
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<String>> revoke({ 
-    required OptiTokenRequest optiTokenRequest,
+    required TokenRequest tokenRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -154,8 +154,8 @@ class AuthenticationControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiTokenRequest);
-      _bodyData = _serializers.serialize(optiTokenRequest, specifiedType: _type);
+      const _type = FullType(TokenRequest);
+      _bodyData = _serializers.serialize(tokenRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(
@@ -207,7 +207,7 @@ class AuthenticationControllerApi {
   /// 
   ///
   /// Parameters:
-  /// * [optiTokenRequest] 
+  /// * [tokenRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -215,10 +215,10 @@ class AuthenticationControllerApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [OptiTokenResponse] as data
+  /// Returns a [Future] containing a [Response] with a [TokenResponse] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<OptiTokenResponse>> token({ 
-    required OptiTokenRequest optiTokenRequest,
+  Future<Response<TokenResponse>> token({ 
+    required TokenRequest tokenRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -243,8 +243,8 @@ class AuthenticationControllerApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OptiTokenRequest);
-      _bodyData = _serializers.serialize(optiTokenRequest, specifiedType: _type);
+      const _type = FullType(TokenRequest);
+      _bodyData = _serializers.serialize(tokenRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioError(
@@ -266,14 +266,14 @@ class AuthenticationControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    OptiTokenResponse _responseData;
+    TokenResponse _responseData;
 
     try {
-      const _responseType = FullType(OptiTokenResponse);
+      const _responseType = FullType(TokenResponse);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as OptiTokenResponse;
+      ) as TokenResponse;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -284,7 +284,7 @@ class AuthenticationControllerApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<OptiTokenResponse>(
+    return Response<TokenResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

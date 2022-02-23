@@ -7,7 +7,7 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:optiapi/src/model/opti_error_info.dart';
+import 'package:goopti_api/src/model/error_info.dart';
 
 class ApiControllerApi {
 

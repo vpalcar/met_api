@@ -1,11 +1,11 @@
-# optiapi.api.ProfileControllerApi
+# goopti_api.api.ProfileControllerApi
 
 ## Load the API package
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 ```
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://api.staging.goopti.com/user-service*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,15 +18,15 @@ Method | HTTP request | Description
 
 
 # **getUserProfile**
-> OptiUserProfileResponse getUserProfile()
+> UserProfileResponse getUserProfile()
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getProfileControllerApi();
+final api = GooptiApi().getProfileControllerApi();
 
 try {
     final response = api.getUserProfile();
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**OptiUserProfileResponse**](OptiUserProfileResponse.md)
+[**UserProfileResponse**](UserProfileResponse.md)
 
 ### Authorization
 
@@ -61,9 +61,9 @@ No authorization required
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getProfileControllerApi();
+final api = GooptiApi().getProfileControllerApi();
 
 try {
     final response = api.getUserProfilePhoto();
@@ -92,19 +92,19 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateUserProfile**
-> String updateUserProfile(optiUserProfileRequest)
+> String updateUserProfile(userProfileRequest)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getProfileControllerApi();
-final OptiUserProfileRequest optiUserProfileRequest = ; // OptiUserProfileRequest | 
+final api = GooptiApi().getProfileControllerApi();
+final UserProfileRequest userProfileRequest = ; // UserProfileRequest | 
 
 try {
-    final response = api.updateUserProfile(optiUserProfileRequest);
+    final response = api.updateUserProfile(userProfileRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling ProfileControllerApi->updateUserProfile: $e\n');
@@ -115,7 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiUserProfileRequest** | [**OptiUserProfileRequest**](OptiUserProfileRequest.md)|  | 
+ **userProfileRequest** | [**UserProfileRequest**](UserProfileRequest.md)|  | 
 
 ### Return type
 
@@ -133,19 +133,19 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadDriverLicencePhoto**
-> String uploadDriverLicencePhoto(optiInlineObject2)
+> String uploadDriverLicencePhoto(inlineObject2)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getProfileControllerApi();
-final OptiInlineObject2 optiInlineObject2 = ; // OptiInlineObject2 | 
+final api = GooptiApi().getProfileControllerApi();
+final InlineObject2 inlineObject2 = ; // InlineObject2 | 
 
 try {
-    final response = api.uploadDriverLicencePhoto(optiInlineObject2);
+    final response = api.uploadDriverLicencePhoto(inlineObject2);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling ProfileControllerApi->uploadDriverLicencePhoto: $e\n');
@@ -156,7 +156,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiInlineObject2** | [**OptiInlineObject2**](OptiInlineObject2.md)|  | [optional] 
+ **inlineObject2** | [**InlineObject2**](InlineObject2.md)|  | [optional] 
 
 ### Return type
 
@@ -174,19 +174,19 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadIdPhoto**
-> String uploadIdPhoto(optiInlineObject1)
+> String uploadIdPhoto(inlineObject1)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getProfileControllerApi();
-final OptiInlineObject1 optiInlineObject1 = ; // OptiInlineObject1 | 
+final api = GooptiApi().getProfileControllerApi();
+final InlineObject1 inlineObject1 = ; // InlineObject1 | 
 
 try {
-    final response = api.uploadIdPhoto(optiInlineObject1);
+    final response = api.uploadIdPhoto(inlineObject1);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling ProfileControllerApi->uploadIdPhoto: $e\n');
@@ -197,7 +197,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiInlineObject1** | [**OptiInlineObject1**](OptiInlineObject1.md)|  | [optional] 
+ **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | [optional] 
 
 ### Return type
 
@@ -215,19 +215,19 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadUserProfilePhoto**
-> String uploadUserProfilePhoto(optiInlineObject)
+> String uploadUserProfilePhoto(inlineObject)
 
 
 
 ### Example
 ```dart
-import 'package:optiapi/api.dart';
+import 'package:goopti_api/api.dart';
 
-final api = Optiapi().getProfileControllerApi();
-final OptiInlineObject optiInlineObject = ; // OptiInlineObject | 
+final api = GooptiApi().getProfileControllerApi();
+final InlineObject inlineObject = ; // InlineObject | 
 
 try {
-    final response = api.uploadUserProfilePhoto(optiInlineObject);
+    final response = api.uploadUserProfilePhoto(inlineObject);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling ProfileControllerApi->uploadUserProfilePhoto: $e\n');
@@ -238,7 +238,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **optiInlineObject** | [**OptiInlineObject**](OptiInlineObject.md)|  | [optional] 
+ **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
 
 ### Return type
 

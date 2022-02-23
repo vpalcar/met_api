@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:optiapi/optiapi.dart';
+import 'package:goopti_api/goopti_api.dart';
 
 
 /// tests for ApiControllerApi
 void main() {
-  final instance = Optiapi().getApiControllerApi();
+  final instance = GooptiApi().getApiControllerApi();
 
   group(ApiControllerApi, () {
     //Future<String> driverInfo() async
