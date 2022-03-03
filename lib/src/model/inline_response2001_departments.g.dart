@@ -8,22 +8,16 @@ part of 'inline_response2001_departments.dart';
 
 class _$InlineResponse2001Departments extends InlineResponse2001Departments {
   @override
-  final num departmentId;
+  final num? departmentId;
   @override
-  final String displayName;
+  final String? displayName;
 
   factory _$InlineResponse2001Departments(
           [void Function(InlineResponse2001DepartmentsBuilder)? updates]) =>
       (new InlineResponse2001DepartmentsBuilder()..update(updates)).build();
 
-  _$InlineResponse2001Departments._(
-      {required this.departmentId, required this.displayName})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        departmentId, 'InlineResponse2001Departments', 'departmentId');
-    BuiltValueNullFieldError.checkNotNull(
-        displayName, 'InlineResponse2001Departments', 'displayName');
-  }
+  _$InlineResponse2001Departments._({this.departmentId, this.displayName})
+      : super._();
 
   @override
   InlineResponse2001Departments rebuild(
@@ -99,10 +93,7 @@ class InlineResponse2001DepartmentsBuilder
   _$InlineResponse2001Departments build() {
     final _$result = _$v ??
         new _$InlineResponse2001Departments._(
-            departmentId: BuiltValueNullFieldError.checkNotNull(
-                departmentId, 'InlineResponse2001Departments', 'departmentId'),
-            displayName: BuiltValueNullFieldError.checkNotNull(
-                displayName, 'InlineResponse2001Departments', 'displayName'));
+            departmentId: departmentId, displayName: displayName);
     replace(_$result);
     return _$result;
   }

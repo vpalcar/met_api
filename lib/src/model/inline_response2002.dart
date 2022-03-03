@@ -17,11 +17,11 @@ part 'inline_response2002.g.dart';
 abstract class InlineResponse2002 implements Built<InlineResponse2002, InlineResponse2002Builder> {
     /// The total number of publicly-available objects
     @BuiltValueField(wireName: r'total')
-    num get total;
+    num? get total;
 
     /// An array containing the object ID of publicly-available object
     @BuiltValueField(wireName: r'objectIDs')
-    BuiltList<JsonObject?> get objectIDs;
+    BuiltList<JsonObject?>? get objectIDs;
 
     InlineResponse2002._();
 
@@ -45,14 +45,18 @@ class _$InlineResponse2002Serializer implements StructuredSerializer<InlineRespo
     Iterable<Object?> serialize(Serializers serializers, InlineResponse2002 object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'total')
-            ..add(serializers.serialize(object.total,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'objectIDs')
-            ..add(serializers.serialize(object.objectIDs,
-                specifiedType: const FullType(BuiltList, [FullType.nullable(JsonObject)])));
+        if (object.total != null) {
+            result
+                ..add(r'total')
+                ..add(serializers.serialize(object.total,
+                    specifiedType: const FullType(num)));
+        }
+        if (object.objectIDs != null) {
+            result
+                ..add(r'objectIDs')
+                ..add(serializers.serialize(object.objectIDs,
+                    specifiedType: const FullType(BuiltList, [FullType.nullable(JsonObject)])));
+        }
         return result;
     }
 

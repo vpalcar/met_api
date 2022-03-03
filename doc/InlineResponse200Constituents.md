@@ -8,12 +8,12 @@ import 'package:met_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**constituentID** | **num** |  | 
-**role** | **String** |  | 
-**name** | **String** |  | 
-**constituentULANURL** | **String** |  | 
-**constituentWikidataURL** | **String** |  | 
-**gender** | **String** |  | 
+**constituentID** | **num** |  | [optional] 
+**role** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
+**constituentULANURL** | **String** |  | [optional] 
+**constituentWikidataURL** | **String** |  | [optional] 
+**gender** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

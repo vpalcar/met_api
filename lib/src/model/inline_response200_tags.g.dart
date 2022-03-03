@@ -8,26 +8,18 @@ part of 'inline_response200_tags.dart';
 
 class _$InlineResponse200Tags extends InlineResponse200Tags {
   @override
-  final String term;
+  final String? term;
   @override
-  final String AAT_URL;
+  final String? AAT_URL;
   @override
-  final String wikidataURL;
+  final String? wikidataURL;
 
   factory _$InlineResponse200Tags(
           [void Function(InlineResponse200TagsBuilder)? updates]) =>
       (new InlineResponse200TagsBuilder()..update(updates)).build();
 
-  _$InlineResponse200Tags._(
-      {required this.term, required this.AAT_URL, required this.wikidataURL})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        term, 'InlineResponse200Tags', 'term');
-    BuiltValueNullFieldError.checkNotNull(
-        AAT_URL, 'InlineResponse200Tags', 'AAT_URL');
-    BuiltValueNullFieldError.checkNotNull(
-        wikidataURL, 'InlineResponse200Tags', 'wikidataURL');
-  }
+  _$InlineResponse200Tags._({this.term, this.AAT_URL, this.wikidataURL})
+      : super._();
 
   @override
   InlineResponse200Tags rebuild(
@@ -109,12 +101,7 @@ class InlineResponse200TagsBuilder
   _$InlineResponse200Tags build() {
     final _$result = _$v ??
         new _$InlineResponse200Tags._(
-            term: BuiltValueNullFieldError.checkNotNull(
-                term, 'InlineResponse200Tags', 'term'),
-            AAT_URL: BuiltValueNullFieldError.checkNotNull(
-                AAT_URL, 'InlineResponse200Tags', 'AAT_URL'),
-            wikidataURL: BuiltValueNullFieldError.checkNotNull(
-                wikidataURL, 'InlineResponse200Tags', 'wikidataURL'));
+            term: term, AAT_URL: AAT_URL, wikidataURL: wikidataURL);
     replace(_$result);
     return _$result;
   }

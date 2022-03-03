@@ -8,20 +8,15 @@ part of 'inline_response2002.dart';
 
 class _$InlineResponse2002 extends InlineResponse2002 {
   @override
-  final num total;
+  final num? total;
   @override
-  final BuiltList<JsonObject?> objectIDs;
+  final BuiltList<JsonObject?>? objectIDs;
 
   factory _$InlineResponse2002(
           [void Function(InlineResponse2002Builder)? updates]) =>
       (new InlineResponse2002Builder()..update(updates)).build();
 
-  _$InlineResponse2002._({required this.total, required this.objectIDs})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(total, 'InlineResponse2002', 'total');
-    BuiltValueNullFieldError.checkNotNull(
-        objectIDs, 'InlineResponse2002', 'objectIDs');
-  }
+  _$InlineResponse2002._({this.total, this.objectIDs}) : super._();
 
   @override
   InlineResponse2002 rebuild(
@@ -76,7 +71,7 @@ class InlineResponse2002Builder
     final $v = _$v;
     if ($v != null) {
       _total = $v.total;
-      _objectIDs = $v.objectIDs.toBuilder();
+      _objectIDs = $v.objectIDs?.toBuilder();
       _$v = null;
     }
     return this;
@@ -99,14 +94,12 @@ class InlineResponse2002Builder
     try {
       _$result = _$v ??
           new _$InlineResponse2002._(
-              total: BuiltValueNullFieldError.checkNotNull(
-                  total, 'InlineResponse2002', 'total'),
-              objectIDs: objectIDs.build());
+              total: total, objectIDs: _objectIDs?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'objectIDs';
-        objectIDs.build();
+        _objectIDs?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'InlineResponse2002', _$failedField, e.toString());

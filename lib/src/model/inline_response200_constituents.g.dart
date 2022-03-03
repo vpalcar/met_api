@@ -8,43 +8,30 @@ part of 'inline_response200_constituents.dart';
 
 class _$InlineResponse200Constituents extends InlineResponse200Constituents {
   @override
-  final num constituentID;
+  final num? constituentID;
   @override
-  final String role;
+  final String? role;
   @override
-  final String name;
+  final String? name;
   @override
-  final String constituentULANURL;
+  final String? constituentULANURL;
   @override
-  final String constituentWikidataURL;
+  final String? constituentWikidataURL;
   @override
-  final String gender;
+  final String? gender;
 
   factory _$InlineResponse200Constituents(
           [void Function(InlineResponse200ConstituentsBuilder)? updates]) =>
       (new InlineResponse200ConstituentsBuilder()..update(updates)).build();
 
   _$InlineResponse200Constituents._(
-      {required this.constituentID,
-      required this.role,
-      required this.name,
-      required this.constituentULANURL,
-      required this.constituentWikidataURL,
-      required this.gender})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        constituentID, 'InlineResponse200Constituents', 'constituentID');
-    BuiltValueNullFieldError.checkNotNull(
-        role, 'InlineResponse200Constituents', 'role');
-    BuiltValueNullFieldError.checkNotNull(
-        name, 'InlineResponse200Constituents', 'name');
-    BuiltValueNullFieldError.checkNotNull(constituentULANURL,
-        'InlineResponse200Constituents', 'constituentULANURL');
-    BuiltValueNullFieldError.checkNotNull(constituentWikidataURL,
-        'InlineResponse200Constituents', 'constituentWikidataURL');
-    BuiltValueNullFieldError.checkNotNull(
-        gender, 'InlineResponse200Constituents', 'gender');
-  }
+      {this.constituentID,
+      this.role,
+      this.name,
+      this.constituentULANURL,
+      this.constituentWikidataURL,
+      this.gender})
+      : super._();
 
   @override
   InlineResponse200Constituents rebuild(
@@ -158,22 +145,12 @@ class InlineResponse200ConstituentsBuilder
   _$InlineResponse200Constituents build() {
     final _$result = _$v ??
         new _$InlineResponse200Constituents._(
-            constituentID: BuiltValueNullFieldError.checkNotNull(constituentID,
-                'InlineResponse200Constituents', 'constituentID'),
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, 'InlineResponse200Constituents', 'role'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, 'InlineResponse200Constituents', 'name'),
-            constituentULANURL: BuiltValueNullFieldError.checkNotNull(
-                constituentULANURL,
-                'InlineResponse200Constituents',
-                'constituentULANURL'),
-            constituentWikidataURL: BuiltValueNullFieldError.checkNotNull(
-                constituentWikidataURL,
-                'InlineResponse200Constituents',
-                'constituentWikidataURL'),
-            gender: BuiltValueNullFieldError.checkNotNull(
-                gender, 'InlineResponse200Constituents', 'gender'));
+            constituentID: constituentID,
+            role: role,
+            name: name,
+            constituentULANURL: constituentULANURL,
+            constituentWikidataURL: constituentWikidataURL,
+            gender: gender);
     replace(_$result);
     return _$result;
   }

@@ -8,7 +8,7 @@ import 'package:met_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**elementName** | **String** |  | 
+**elementName** | **String** |  | [optional] 
 **elementDescription** | [**JsonObject**](.md) |  | [optional] 
 **elementMeasurements** | [**InlineResponse200ElementMeasurements**](InlineResponse200ElementMeasurements.md) |  | [optional] 
 

@@ -8,16 +8,13 @@ part of 'inline_response2001.dart';
 
 class _$InlineResponse2001 extends InlineResponse2001 {
   @override
-  final BuiltSet<InlineResponse2001Departments> departments;
+  final BuiltSet<InlineResponse2001Departments>? departments;
 
   factory _$InlineResponse2001(
           [void Function(InlineResponse2001Builder)? updates]) =>
       (new InlineResponse2001Builder()..update(updates)).build();
 
-  _$InlineResponse2001._({required this.departments}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        departments, 'InlineResponse2001', 'departments');
-  }
+  _$InlineResponse2001._({this.departments}) : super._();
 
   @override
   InlineResponse2001 rebuild(
@@ -64,7 +61,7 @@ class InlineResponse2001Builder
   InlineResponse2001Builder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _departments = $v.departments.toBuilder();
+      _departments = $v.departments?.toBuilder();
       _$v = null;
     }
     return this;
@@ -86,12 +83,12 @@ class InlineResponse2001Builder
     _$InlineResponse2001 _$result;
     try {
       _$result =
-          _$v ?? new _$InlineResponse2001._(departments: departments.build());
+          _$v ?? new _$InlineResponse2001._(departments: _departments?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'departments';
-        departments.build();
+        _departments?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'InlineResponse2001', _$failedField, e.toString());

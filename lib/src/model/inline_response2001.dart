@@ -16,7 +16,7 @@ part 'inline_response2001.g.dart';
 abstract class InlineResponse2001 implements Built<InlineResponse2001, InlineResponse2001Builder> {
     /// An array containing the JSON objects that contain each department's departmentId and display name. The departmentId is to be used as a query parameter on the `/objects` endpoint
     @BuiltValueField(wireName: r'departments')
-    BuiltSet<InlineResponse2001Departments> get departments;
+    BuiltSet<InlineResponse2001Departments>? get departments;
 
     InlineResponse2001._();
 
@@ -40,10 +40,12 @@ class _$InlineResponse2001Serializer implements StructuredSerializer<InlineRespo
     Iterable<Object?> serialize(Serializers serializers, InlineResponse2001 object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'departments')
-            ..add(serializers.serialize(object.departments,
-                specifiedType: const FullType(BuiltSet, [FullType(InlineResponse2001Departments)])));
+        if (object.departments != null) {
+            result
+                ..add(r'departments')
+                ..add(serializers.serialize(object.departments,
+                    specifiedType: const FullType(BuiltSet, [FullType(InlineResponse2001Departments)])));
+        }
         return result;
     }
 

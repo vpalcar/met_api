@@ -15,13 +15,13 @@ part 'inline_response200_tags.g.dart';
 /// * [wikidataURL] 
 abstract class InlineResponse200Tags implements Built<InlineResponse200Tags, InlineResponse200TagsBuilder> {
     @BuiltValueField(wireName: r'term')
-    String get term;
+    String? get term;
 
     @BuiltValueField(wireName: r'AAT_URL')
-    String get AAT_URL;
+    String? get AAT_URL;
 
     @BuiltValueField(wireName: r'Wikidata_URL')
-    String get wikidataURL;
+    String? get wikidataURL;
 
     InlineResponse200Tags._();
 
@@ -45,18 +45,24 @@ class _$InlineResponse200TagsSerializer implements StructuredSerializer<InlineRe
     Iterable<Object?> serialize(Serializers serializers, InlineResponse200Tags object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'term')
-            ..add(serializers.serialize(object.term,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'AAT_URL')
-            ..add(serializers.serialize(object.AAT_URL,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'Wikidata_URL')
-            ..add(serializers.serialize(object.wikidataURL,
-                specifiedType: const FullType(String)));
+        if (object.term != null) {
+            result
+                ..add(r'term')
+                ..add(serializers.serialize(object.term,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.AAT_URL != null) {
+            result
+                ..add(r'AAT_URL')
+                ..add(serializers.serialize(object.AAT_URL,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.wikidataURL != null) {
+            result
+                ..add(r'Wikidata_URL')
+                ..add(serializers.serialize(object.wikidataURL,
+                    specifiedType: const FullType(String)));
+        }
         return result;
     }
 

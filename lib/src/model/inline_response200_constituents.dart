@@ -18,22 +18,22 @@ part 'inline_response200_constituents.g.dart';
 /// * [gender] 
 abstract class InlineResponse200Constituents implements Built<InlineResponse200Constituents, InlineResponse200ConstituentsBuilder> {
     @BuiltValueField(wireName: r'constituentID')
-    num get constituentID;
+    num? get constituentID;
 
     @BuiltValueField(wireName: r'role')
-    String get role;
+    String? get role;
 
     @BuiltValueField(wireName: r'name')
-    String get name;
+    String? get name;
 
     @BuiltValueField(wireName: r'constituentULAN_URL')
-    String get constituentULANURL;
+    String? get constituentULANURL;
 
     @BuiltValueField(wireName: r'constituentWikidata_URL')
-    String get constituentWikidataURL;
+    String? get constituentWikidataURL;
 
     @BuiltValueField(wireName: r'gender')
-    String get gender;
+    String? get gender;
 
     InlineResponse200Constituents._();
 
@@ -57,30 +57,42 @@ class _$InlineResponse200ConstituentsSerializer implements StructuredSerializer<
     Iterable<Object?> serialize(Serializers serializers, InlineResponse200Constituents object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'constituentID')
-            ..add(serializers.serialize(object.constituentID,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'role')
-            ..add(serializers.serialize(object.role,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'name')
-            ..add(serializers.serialize(object.name,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'constituentULAN_URL')
-            ..add(serializers.serialize(object.constituentULANURL,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'constituentWikidata_URL')
-            ..add(serializers.serialize(object.constituentWikidataURL,
-                specifiedType: const FullType(String)));
-        result
-            ..add(r'gender')
-            ..add(serializers.serialize(object.gender,
-                specifiedType: const FullType(String)));
+        if (object.constituentID != null) {
+            result
+                ..add(r'constituentID')
+                ..add(serializers.serialize(object.constituentID,
+                    specifiedType: const FullType(num)));
+        }
+        if (object.role != null) {
+            result
+                ..add(r'role')
+                ..add(serializers.serialize(object.role,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.name != null) {
+            result
+                ..add(r'name')
+                ..add(serializers.serialize(object.name,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.constituentULANURL != null) {
+            result
+                ..add(r'constituentULAN_URL')
+                ..add(serializers.serialize(object.constituentULANURL,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.constituentWikidataURL != null) {
+            result
+                ..add(r'constituentWikidata_URL')
+                ..add(serializers.serialize(object.constituentWikidataURL,
+                    specifiedType: const FullType(String)));
+        }
+        if (object.gender != null) {
+            result
+                ..add(r'gender')
+                ..add(serializers.serialize(object.gender,
+                    specifiedType: const FullType(String)));
+        }
         return result;
     }
 

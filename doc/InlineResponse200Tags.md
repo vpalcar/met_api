@@ -8,9 +8,9 @@ import 'package:met_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**term** | **String** |  | 
-**AAT_URL** | **String** |  | 
-**wikidataURL** | **String** |  | 
+**term** | **String** |  | [optional] 
+**AAT_URL** | **String** |  | [optional] 
+**wikidataURL** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

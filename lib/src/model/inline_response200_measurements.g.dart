@@ -8,7 +8,7 @@ part of 'inline_response200_measurements.dart';
 
 class _$InlineResponse200Measurements extends InlineResponse200Measurements {
   @override
-  final String elementName;
+  final String? elementName;
   @override
   final JsonObject? elementDescription;
   @override
@@ -19,13 +19,8 @@ class _$InlineResponse200Measurements extends InlineResponse200Measurements {
       (new InlineResponse200MeasurementsBuilder()..update(updates)).build();
 
   _$InlineResponse200Measurements._(
-      {required this.elementName,
-      this.elementDescription,
-      this.elementMeasurements})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        elementName, 'InlineResponse200Measurements', 'elementName');
-  }
+      {this.elementName, this.elementDescription, this.elementMeasurements})
+      : super._();
 
   @override
   InlineResponse200Measurements rebuild(
@@ -117,8 +112,7 @@ class InlineResponse200MeasurementsBuilder
     try {
       _$result = _$v ??
           new _$InlineResponse200Measurements._(
-              elementName: BuiltValueNullFieldError.checkNotNull(
-                  elementName, 'InlineResponse200Measurements', 'elementName'),
+              elementName: elementName,
               elementDescription: elementDescription,
               elementMeasurements: _elementMeasurements?.build());
     } catch (_) {

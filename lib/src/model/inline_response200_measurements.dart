@@ -17,7 +17,7 @@ part 'inline_response200_measurements.g.dart';
 /// * [elementMeasurements] 
 abstract class InlineResponse200Measurements implements Built<InlineResponse200Measurements, InlineResponse200MeasurementsBuilder> {
     @BuiltValueField(wireName: r'elementName')
-    String get elementName;
+    String? get elementName;
 
     @BuiltValueField(wireName: r'elementDescription')
     JsonObject? get elementDescription;
@@ -47,10 +47,12 @@ class _$InlineResponse200MeasurementsSerializer implements StructuredSerializer<
     Iterable<Object?> serialize(Serializers serializers, InlineResponse200Measurements object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'elementName')
-            ..add(serializers.serialize(object.elementName,
-                specifiedType: const FullType(String)));
+        if (object.elementName != null) {
+            result
+                ..add(r'elementName')
+                ..add(serializers.serialize(object.elementName,
+                    specifiedType: const FullType(String)));
+        }
         if (object.elementDescription != null) {
             result
                 ..add(r'elementDescription')

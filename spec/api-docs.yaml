@@ -206,13 +206,7 @@ paths:
                         gender:
                           type: string
                           minLength: 1
-                      required:
-                        - constituentID
-                        - role
-                        - name
-                        - constituentULAN_URL
-                        - constituentWikidata_URL
-                        - gender
+                  
                   department:
                     type: string
                     minLength: 1
@@ -325,8 +319,7 @@ paths:
                               type: number
                             Width:
                               type: number
-                      required:
-                        - elementName
+                      
                   creditLine:
                     type: string
                     minLength: 1
@@ -403,10 +396,7 @@ paths:
                         Wikidata_URL:
                           type: string
                           minLength: 1
-                      required:
-                        - term
-                        - AAT_URL
-                        - Wikidata_URL
+                    
                   objectWikidata_URL:
                     type: string
                     minLength: 1
@@ -417,64 +407,7 @@ paths:
                   GalleryNumber:
                     type: string
                     description: 'Gallery number, where available. Example: "131"'
-                required:
-                  - objectID
-                  - isHighlight
-                  - accessionNumber
-                  - accessionYear
-                  - isPublicDomain
-                  - primaryImage
-                  - primaryImageSmall
-                  - additionalImages
-                  - constituents
-                  - department
-                  - objectName
-                  - title
-                  - culture
-                  - period
-                  - dynasty
-                  - reign
-                  - portfolio
-                  - artistRole
-                  - artistPrefix
-                  - artistDisplayName
-                  - artistDisplayBio
-                  - artistSuffix
-                  - artistAlphaSort
-                  - artistNationality
-                  - artistBeginDate
-                  - artistEndDate
-                  - artistGender
-                  - artistWikidata_URL
-                  - artistULAN_URL
-                  - objectDate
-                  - objectBeginDate
-                  - objectEndDate
-                  - medium
-                  - dimensions
-                  - measurements
-                  - creditLine
-                  - geographyType
-                  - city
-                  - state
-                  - county
-                  - country
-                  - region
-                  - subregion
-                  - locale
-                  - locus
-                  - excavation
-                  - river
-                  - classification
-                  - rightsAndReproduction
-                  - linkResource
-                  - metadataDate
-                  - repository
-                  - objectURL
-                  - tags
-                  - objectWikidata_URL
-                  - isTimelineWork
-                  - GalleryNumber
+              
       operationId: get-objects-objectID
       description: 'Returns a record for an object, containing all open access data about that object, including its image (if the image is available under Open Access)'
       parameters: []
@@ -553,11 +486,8 @@ paths:
                           type: string
                           minLength: 1
                           description: Display name for a department
-                      required:
-                        - departmentId
-                        - displayName
-                required:
-                  - departments
+                      
+           
       operationId: get-departments
       parameters: []
       description: Returns a listing of all departments
@@ -588,9 +518,7 @@ paths:
                     type: array
                     description: An array containing the object ID of publicly-available object
                     items: {}
-                required:
-                  - total
-                  - objectIDs
+              
       operationId: get-search
       parameters:
         - schema:

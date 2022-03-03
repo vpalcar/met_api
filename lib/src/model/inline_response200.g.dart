@@ -8,291 +8,183 @@ part of 'inline_response200.dart';
 
 class _$InlineResponse200 extends InlineResponse200 {
   @override
-  final num objectID;
+  final num? objectID;
   @override
-  final bool isHighlight;
+  final bool? isHighlight;
   @override
-  final String accessionNumber;
+  final String? accessionNumber;
   @override
-  final String accessionYear;
+  final String? accessionYear;
   @override
-  final bool isPublicDomain;
+  final bool? isPublicDomain;
   @override
-  final String primaryImage;
+  final String? primaryImage;
   @override
-  final String primaryImageSmall;
+  final String? primaryImageSmall;
   @override
-  final BuiltList<JsonObject> additionalImages;
+  final BuiltList<JsonObject>? additionalImages;
   @override
-  final BuiltSet<InlineResponse200Constituents> constituents;
+  final BuiltSet<InlineResponse200Constituents>? constituents;
   @override
-  final String department;
+  final String? department;
   @override
-  final String objectName;
+  final String? objectName;
   @override
-  final String title;
+  final String? title;
   @override
-  final String culture;
+  final String? culture;
   @override
-  final String period;
+  final String? period;
   @override
-  final String dynasty;
+  final String? dynasty;
   @override
-  final String reign;
+  final String? reign;
   @override
-  final String portfolio;
+  final String? portfolio;
   @override
-  final String artistRole;
+  final String? artistRole;
   @override
-  final String artistPrefix;
+  final String? artistPrefix;
   @override
-  final String artistDisplayName;
+  final String? artistDisplayName;
   @override
-  final String artistDisplayBio;
+  final String? artistDisplayBio;
   @override
-  final String artistSuffix;
+  final String? artistSuffix;
   @override
-  final String artistAlphaSort;
+  final String? artistAlphaSort;
   @override
-  final String artistNationality;
+  final String? artistNationality;
   @override
-  final String artistBeginDate;
+  final String? artistBeginDate;
   @override
-  final String artistEndDate;
+  final String? artistEndDate;
   @override
-  final String artistGender;
+  final String? artistGender;
   @override
-  final String artistWikidataURL;
+  final String? artistWikidataURL;
   @override
-  final String artistULANURL;
+  final String? artistULANURL;
   @override
-  final String objectDate;
+  final String? objectDate;
   @override
-  final num objectBeginDate;
+  final num? objectBeginDate;
   @override
-  final num objectEndDate;
+  final num? objectEndDate;
   @override
-  final String medium;
+  final String? medium;
   @override
-  final String dimensions;
+  final String? dimensions;
   @override
-  final BuiltSet<InlineResponse200Measurements> measurements;
+  final BuiltSet<InlineResponse200Measurements>? measurements;
   @override
-  final String creditLine;
+  final String? creditLine;
   @override
-  final String geographyType;
+  final String? geographyType;
   @override
-  final String city;
+  final String? city;
   @override
-  final String state;
+  final String? state;
   @override
-  final String county;
+  final String? county;
   @override
-  final String country;
+  final String? country;
   @override
-  final String region;
+  final String? region;
   @override
-  final String subregion;
+  final String? subregion;
   @override
-  final String locale;
+  final String? locale;
   @override
-  final String locus;
+  final String? locus;
   @override
-  final String excavation;
+  final String? excavation;
   @override
-  final String river;
+  final String? river;
   @override
-  final String classification;
+  final String? classification;
   @override
-  final String rightsAndReproduction;
+  final String? rightsAndReproduction;
   @override
-  final String linkResource;
+  final String? linkResource;
   @override
-  final String metadataDate;
+  final String? metadataDate;
   @override
-  final String repository;
+  final String? repository;
   @override
-  final String objectURL;
+  final String? objectURL;
   @override
-  final BuiltSet<InlineResponse200Tags> tags;
+  final BuiltSet<InlineResponse200Tags>? tags;
   @override
-  final String objectWikidataURL;
+  final String? objectWikidataURL;
   @override
-  final bool isTimelineWork;
+  final bool? isTimelineWork;
   @override
-  final String galleryNumber;
+  final String? galleryNumber;
 
   factory _$InlineResponse200(
           [void Function(InlineResponse200Builder)? updates]) =>
       (new InlineResponse200Builder()..update(updates)).build();
 
   _$InlineResponse200._(
-      {required this.objectID,
-      required this.isHighlight,
-      required this.accessionNumber,
-      required this.accessionYear,
-      required this.isPublicDomain,
-      required this.primaryImage,
-      required this.primaryImageSmall,
-      required this.additionalImages,
-      required this.constituents,
-      required this.department,
-      required this.objectName,
-      required this.title,
-      required this.culture,
-      required this.period,
-      required this.dynasty,
-      required this.reign,
-      required this.portfolio,
-      required this.artistRole,
-      required this.artistPrefix,
-      required this.artistDisplayName,
-      required this.artistDisplayBio,
-      required this.artistSuffix,
-      required this.artistAlphaSort,
-      required this.artistNationality,
-      required this.artistBeginDate,
-      required this.artistEndDate,
-      required this.artistGender,
-      required this.artistWikidataURL,
-      required this.artistULANURL,
-      required this.objectDate,
-      required this.objectBeginDate,
-      required this.objectEndDate,
-      required this.medium,
-      required this.dimensions,
-      required this.measurements,
-      required this.creditLine,
-      required this.geographyType,
-      required this.city,
-      required this.state,
-      required this.county,
-      required this.country,
-      required this.region,
-      required this.subregion,
-      required this.locale,
-      required this.locus,
-      required this.excavation,
-      required this.river,
-      required this.classification,
-      required this.rightsAndReproduction,
-      required this.linkResource,
-      required this.metadataDate,
-      required this.repository,
-      required this.objectURL,
-      required this.tags,
-      required this.objectWikidataURL,
-      required this.isTimelineWork,
-      required this.galleryNumber})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        objectID, 'InlineResponse200', 'objectID');
-    BuiltValueNullFieldError.checkNotNull(
-        isHighlight, 'InlineResponse200', 'isHighlight');
-    BuiltValueNullFieldError.checkNotNull(
-        accessionNumber, 'InlineResponse200', 'accessionNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        accessionYear, 'InlineResponse200', 'accessionYear');
-    BuiltValueNullFieldError.checkNotNull(
-        isPublicDomain, 'InlineResponse200', 'isPublicDomain');
-    BuiltValueNullFieldError.checkNotNull(
-        primaryImage, 'InlineResponse200', 'primaryImage');
-    BuiltValueNullFieldError.checkNotNull(
-        primaryImageSmall, 'InlineResponse200', 'primaryImageSmall');
-    BuiltValueNullFieldError.checkNotNull(
-        additionalImages, 'InlineResponse200', 'additionalImages');
-    BuiltValueNullFieldError.checkNotNull(
-        constituents, 'InlineResponse200', 'constituents');
-    BuiltValueNullFieldError.checkNotNull(
-        department, 'InlineResponse200', 'department');
-    BuiltValueNullFieldError.checkNotNull(
-        objectName, 'InlineResponse200', 'objectName');
-    BuiltValueNullFieldError.checkNotNull(title, 'InlineResponse200', 'title');
-    BuiltValueNullFieldError.checkNotNull(
-        culture, 'InlineResponse200', 'culture');
-    BuiltValueNullFieldError.checkNotNull(
-        period, 'InlineResponse200', 'period');
-    BuiltValueNullFieldError.checkNotNull(
-        dynasty, 'InlineResponse200', 'dynasty');
-    BuiltValueNullFieldError.checkNotNull(reign, 'InlineResponse200', 'reign');
-    BuiltValueNullFieldError.checkNotNull(
-        portfolio, 'InlineResponse200', 'portfolio');
-    BuiltValueNullFieldError.checkNotNull(
-        artistRole, 'InlineResponse200', 'artistRole');
-    BuiltValueNullFieldError.checkNotNull(
-        artistPrefix, 'InlineResponse200', 'artistPrefix');
-    BuiltValueNullFieldError.checkNotNull(
-        artistDisplayName, 'InlineResponse200', 'artistDisplayName');
-    BuiltValueNullFieldError.checkNotNull(
-        artistDisplayBio, 'InlineResponse200', 'artistDisplayBio');
-    BuiltValueNullFieldError.checkNotNull(
-        artistSuffix, 'InlineResponse200', 'artistSuffix');
-    BuiltValueNullFieldError.checkNotNull(
-        artistAlphaSort, 'InlineResponse200', 'artistAlphaSort');
-    BuiltValueNullFieldError.checkNotNull(
-        artistNationality, 'InlineResponse200', 'artistNationality');
-    BuiltValueNullFieldError.checkNotNull(
-        artistBeginDate, 'InlineResponse200', 'artistBeginDate');
-    BuiltValueNullFieldError.checkNotNull(
-        artistEndDate, 'InlineResponse200', 'artistEndDate');
-    BuiltValueNullFieldError.checkNotNull(
-        artistGender, 'InlineResponse200', 'artistGender');
-    BuiltValueNullFieldError.checkNotNull(
-        artistWikidataURL, 'InlineResponse200', 'artistWikidataURL');
-    BuiltValueNullFieldError.checkNotNull(
-        artistULANURL, 'InlineResponse200', 'artistULANURL');
-    BuiltValueNullFieldError.checkNotNull(
-        objectDate, 'InlineResponse200', 'objectDate');
-    BuiltValueNullFieldError.checkNotNull(
-        objectBeginDate, 'InlineResponse200', 'objectBeginDate');
-    BuiltValueNullFieldError.checkNotNull(
-        objectEndDate, 'InlineResponse200', 'objectEndDate');
-    BuiltValueNullFieldError.checkNotNull(
-        medium, 'InlineResponse200', 'medium');
-    BuiltValueNullFieldError.checkNotNull(
-        dimensions, 'InlineResponse200', 'dimensions');
-    BuiltValueNullFieldError.checkNotNull(
-        measurements, 'InlineResponse200', 'measurements');
-    BuiltValueNullFieldError.checkNotNull(
-        creditLine, 'InlineResponse200', 'creditLine');
-    BuiltValueNullFieldError.checkNotNull(
-        geographyType, 'InlineResponse200', 'geographyType');
-    BuiltValueNullFieldError.checkNotNull(city, 'InlineResponse200', 'city');
-    BuiltValueNullFieldError.checkNotNull(state, 'InlineResponse200', 'state');
-    BuiltValueNullFieldError.checkNotNull(
-        county, 'InlineResponse200', 'county');
-    BuiltValueNullFieldError.checkNotNull(
-        country, 'InlineResponse200', 'country');
-    BuiltValueNullFieldError.checkNotNull(
-        region, 'InlineResponse200', 'region');
-    BuiltValueNullFieldError.checkNotNull(
-        subregion, 'InlineResponse200', 'subregion');
-    BuiltValueNullFieldError.checkNotNull(
-        locale, 'InlineResponse200', 'locale');
-    BuiltValueNullFieldError.checkNotNull(locus, 'InlineResponse200', 'locus');
-    BuiltValueNullFieldError.checkNotNull(
-        excavation, 'InlineResponse200', 'excavation');
-    BuiltValueNullFieldError.checkNotNull(river, 'InlineResponse200', 'river');
-    BuiltValueNullFieldError.checkNotNull(
-        classification, 'InlineResponse200', 'classification');
-    BuiltValueNullFieldError.checkNotNull(
-        rightsAndReproduction, 'InlineResponse200', 'rightsAndReproduction');
-    BuiltValueNullFieldError.checkNotNull(
-        linkResource, 'InlineResponse200', 'linkResource');
-    BuiltValueNullFieldError.checkNotNull(
-        metadataDate, 'InlineResponse200', 'metadataDate');
-    BuiltValueNullFieldError.checkNotNull(
-        repository, 'InlineResponse200', 'repository');
-    BuiltValueNullFieldError.checkNotNull(
-        objectURL, 'InlineResponse200', 'objectURL');
-    BuiltValueNullFieldError.checkNotNull(tags, 'InlineResponse200', 'tags');
-    BuiltValueNullFieldError.checkNotNull(
-        objectWikidataURL, 'InlineResponse200', 'objectWikidataURL');
-    BuiltValueNullFieldError.checkNotNull(
-        isTimelineWork, 'InlineResponse200', 'isTimelineWork');
-    BuiltValueNullFieldError.checkNotNull(
-        galleryNumber, 'InlineResponse200', 'galleryNumber');
-  }
+      {this.objectID,
+      this.isHighlight,
+      this.accessionNumber,
+      this.accessionYear,
+      this.isPublicDomain,
+      this.primaryImage,
+      this.primaryImageSmall,
+      this.additionalImages,
+      this.constituents,
+      this.department,
+      this.objectName,
+      this.title,
+      this.culture,
+      this.period,
+      this.dynasty,
+      this.reign,
+      this.portfolio,
+      this.artistRole,
+      this.artistPrefix,
+      this.artistDisplayName,
+      this.artistDisplayBio,
+      this.artistSuffix,
+      this.artistAlphaSort,
+      this.artistNationality,
+      this.artistBeginDate,
+      this.artistEndDate,
+      this.artistGender,
+      this.artistWikidataURL,
+      this.artistULANURL,
+      this.objectDate,
+      this.objectBeginDate,
+      this.objectEndDate,
+      this.medium,
+      this.dimensions,
+      this.measurements,
+      this.creditLine,
+      this.geographyType,
+      this.city,
+      this.state,
+      this.county,
+      this.country,
+      this.region,
+      this.subregion,
+      this.locale,
+      this.locus,
+      this.excavation,
+      this.river,
+      this.classification,
+      this.rightsAndReproduction,
+      this.linkResource,
+      this.metadataDate,
+      this.repository,
+      this.objectURL,
+      this.tags,
+      this.objectWikidataURL,
+      this.isTimelineWork,
+      this.galleryNumber})
+      : super._();
 
   @override
   InlineResponse200 rebuild(void Function(InlineResponse200Builder) updates) =>
@@ -744,8 +636,8 @@ class InlineResponse200Builder
       _isPublicDomain = $v.isPublicDomain;
       _primaryImage = $v.primaryImage;
       _primaryImageSmall = $v.primaryImageSmall;
-      _additionalImages = $v.additionalImages.toBuilder();
-      _constituents = $v.constituents.toBuilder();
+      _additionalImages = $v.additionalImages?.toBuilder();
+      _constituents = $v.constituents?.toBuilder();
       _department = $v.department;
       _objectName = $v.objectName;
       _title = $v.title;
@@ -771,7 +663,7 @@ class InlineResponse200Builder
       _objectEndDate = $v.objectEndDate;
       _medium = $v.medium;
       _dimensions = $v.dimensions;
-      _measurements = $v.measurements.toBuilder();
+      _measurements = $v.measurements?.toBuilder();
       _creditLine = $v.creditLine;
       _geographyType = $v.geographyType;
       _city = $v.city;
@@ -790,7 +682,7 @@ class InlineResponse200Builder
       _metadataDate = $v.metadataDate;
       _repository = $v.repository;
       _objectURL = $v.objectURL;
-      _tags = $v.tags.toBuilder();
+      _tags = $v.tags?.toBuilder();
       _objectWikidataURL = $v.objectWikidataURL;
       _isTimelineWork = $v.isTimelineWork;
       _galleryNumber = $v.galleryNumber;
@@ -816,83 +708,76 @@ class InlineResponse200Builder
     try {
       _$result = _$v ??
           new _$InlineResponse200._(
-              objectID: BuiltValueNullFieldError.checkNotNull(
-                  objectID, 'InlineResponse200', 'objectID'),
-              isHighlight: BuiltValueNullFieldError.checkNotNull(
-                  isHighlight, 'InlineResponse200', 'isHighlight'),
-              accessionNumber: BuiltValueNullFieldError.checkNotNull(
-                  accessionNumber, 'InlineResponse200', 'accessionNumber'),
-              accessionYear: BuiltValueNullFieldError.checkNotNull(
-                  accessionYear, 'InlineResponse200', 'accessionYear'),
-              isPublicDomain: BuiltValueNullFieldError.checkNotNull(
-                  isPublicDomain, 'InlineResponse200', 'isPublicDomain'),
-              primaryImage: BuiltValueNullFieldError.checkNotNull(
-                  primaryImage, 'InlineResponse200', 'primaryImage'),
-              primaryImageSmall: BuiltValueNullFieldError.checkNotNull(
-                  primaryImageSmall, 'InlineResponse200', 'primaryImageSmall'),
-              additionalImages: additionalImages.build(),
-              constituents: constituents.build(),
-              department: BuiltValueNullFieldError.checkNotNull(department, 'InlineResponse200', 'department'),
-              objectName: BuiltValueNullFieldError.checkNotNull(objectName, 'InlineResponse200', 'objectName'),
-              title: BuiltValueNullFieldError.checkNotNull(title, 'InlineResponse200', 'title'),
-              culture: BuiltValueNullFieldError.checkNotNull(culture, 'InlineResponse200', 'culture'),
-              period: BuiltValueNullFieldError.checkNotNull(period, 'InlineResponse200', 'period'),
-              dynasty: BuiltValueNullFieldError.checkNotNull(dynasty, 'InlineResponse200', 'dynasty'),
-              reign: BuiltValueNullFieldError.checkNotNull(reign, 'InlineResponse200', 'reign'),
-              portfolio: BuiltValueNullFieldError.checkNotNull(portfolio, 'InlineResponse200', 'portfolio'),
-              artistRole: BuiltValueNullFieldError.checkNotNull(artistRole, 'InlineResponse200', 'artistRole'),
-              artistPrefix: BuiltValueNullFieldError.checkNotNull(artistPrefix, 'InlineResponse200', 'artistPrefix'),
-              artistDisplayName: BuiltValueNullFieldError.checkNotNull(artistDisplayName, 'InlineResponse200', 'artistDisplayName'),
-              artistDisplayBio: BuiltValueNullFieldError.checkNotNull(artistDisplayBio, 'InlineResponse200', 'artistDisplayBio'),
-              artistSuffix: BuiltValueNullFieldError.checkNotNull(artistSuffix, 'InlineResponse200', 'artistSuffix'),
-              artistAlphaSort: BuiltValueNullFieldError.checkNotNull(artistAlphaSort, 'InlineResponse200', 'artistAlphaSort'),
-              artistNationality: BuiltValueNullFieldError.checkNotNull(artistNationality, 'InlineResponse200', 'artistNationality'),
-              artistBeginDate: BuiltValueNullFieldError.checkNotNull(artistBeginDate, 'InlineResponse200', 'artistBeginDate'),
-              artistEndDate: BuiltValueNullFieldError.checkNotNull(artistEndDate, 'InlineResponse200', 'artistEndDate'),
-              artistGender: BuiltValueNullFieldError.checkNotNull(artistGender, 'InlineResponse200', 'artistGender'),
-              artistWikidataURL: BuiltValueNullFieldError.checkNotNull(artistWikidataURL, 'InlineResponse200', 'artistWikidataURL'),
-              artistULANURL: BuiltValueNullFieldError.checkNotNull(artistULANURL, 'InlineResponse200', 'artistULANURL'),
-              objectDate: BuiltValueNullFieldError.checkNotNull(objectDate, 'InlineResponse200', 'objectDate'),
-              objectBeginDate: BuiltValueNullFieldError.checkNotNull(objectBeginDate, 'InlineResponse200', 'objectBeginDate'),
-              objectEndDate: BuiltValueNullFieldError.checkNotNull(objectEndDate, 'InlineResponse200', 'objectEndDate'),
-              medium: BuiltValueNullFieldError.checkNotNull(medium, 'InlineResponse200', 'medium'),
-              dimensions: BuiltValueNullFieldError.checkNotNull(dimensions, 'InlineResponse200', 'dimensions'),
-              measurements: measurements.build(),
-              creditLine: BuiltValueNullFieldError.checkNotNull(creditLine, 'InlineResponse200', 'creditLine'),
-              geographyType: BuiltValueNullFieldError.checkNotNull(geographyType, 'InlineResponse200', 'geographyType'),
-              city: BuiltValueNullFieldError.checkNotNull(city, 'InlineResponse200', 'city'),
-              state: BuiltValueNullFieldError.checkNotNull(state, 'InlineResponse200', 'state'),
-              county: BuiltValueNullFieldError.checkNotNull(county, 'InlineResponse200', 'county'),
-              country: BuiltValueNullFieldError.checkNotNull(country, 'InlineResponse200', 'country'),
-              region: BuiltValueNullFieldError.checkNotNull(region, 'InlineResponse200', 'region'),
-              subregion: BuiltValueNullFieldError.checkNotNull(subregion, 'InlineResponse200', 'subregion'),
-              locale: BuiltValueNullFieldError.checkNotNull(locale, 'InlineResponse200', 'locale'),
-              locus: BuiltValueNullFieldError.checkNotNull(locus, 'InlineResponse200', 'locus'),
-              excavation: BuiltValueNullFieldError.checkNotNull(excavation, 'InlineResponse200', 'excavation'),
-              river: BuiltValueNullFieldError.checkNotNull(river, 'InlineResponse200', 'river'),
-              classification: BuiltValueNullFieldError.checkNotNull(classification, 'InlineResponse200', 'classification'),
-              rightsAndReproduction: BuiltValueNullFieldError.checkNotNull(rightsAndReproduction, 'InlineResponse200', 'rightsAndReproduction'),
-              linkResource: BuiltValueNullFieldError.checkNotNull(linkResource, 'InlineResponse200', 'linkResource'),
-              metadataDate: BuiltValueNullFieldError.checkNotNull(metadataDate, 'InlineResponse200', 'metadataDate'),
-              repository: BuiltValueNullFieldError.checkNotNull(repository, 'InlineResponse200', 'repository'),
-              objectURL: BuiltValueNullFieldError.checkNotNull(objectURL, 'InlineResponse200', 'objectURL'),
-              tags: tags.build(),
-              objectWikidataURL: BuiltValueNullFieldError.checkNotNull(objectWikidataURL, 'InlineResponse200', 'objectWikidataURL'),
-              isTimelineWork: BuiltValueNullFieldError.checkNotNull(isTimelineWork, 'InlineResponse200', 'isTimelineWork'),
-              galleryNumber: BuiltValueNullFieldError.checkNotNull(galleryNumber, 'InlineResponse200', 'galleryNumber'));
+              objectID: objectID,
+              isHighlight: isHighlight,
+              accessionNumber: accessionNumber,
+              accessionYear: accessionYear,
+              isPublicDomain: isPublicDomain,
+              primaryImage: primaryImage,
+              primaryImageSmall: primaryImageSmall,
+              additionalImages: _additionalImages?.build(),
+              constituents: _constituents?.build(),
+              department: department,
+              objectName: objectName,
+              title: title,
+              culture: culture,
+              period: period,
+              dynasty: dynasty,
+              reign: reign,
+              portfolio: portfolio,
+              artistRole: artistRole,
+              artistPrefix: artistPrefix,
+              artistDisplayName: artistDisplayName,
+              artistDisplayBio: artistDisplayBio,
+              artistSuffix: artistSuffix,
+              artistAlphaSort: artistAlphaSort,
+              artistNationality: artistNationality,
+              artistBeginDate: artistBeginDate,
+              artistEndDate: artistEndDate,
+              artistGender: artistGender,
+              artistWikidataURL: artistWikidataURL,
+              artistULANURL: artistULANURL,
+              objectDate: objectDate,
+              objectBeginDate: objectBeginDate,
+              objectEndDate: objectEndDate,
+              medium: medium,
+              dimensions: dimensions,
+              measurements: _measurements?.build(),
+              creditLine: creditLine,
+              geographyType: geographyType,
+              city: city,
+              state: state,
+              county: county,
+              country: country,
+              region: region,
+              subregion: subregion,
+              locale: locale,
+              locus: locus,
+              excavation: excavation,
+              river: river,
+              classification: classification,
+              rightsAndReproduction: rightsAndReproduction,
+              linkResource: linkResource,
+              metadataDate: metadataDate,
+              repository: repository,
+              objectURL: objectURL,
+              tags: _tags?.build(),
+              objectWikidataURL: objectWikidataURL,
+              isTimelineWork: isTimelineWork,
+              galleryNumber: galleryNumber);
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'additionalImages';
-        additionalImages.build();
+        _additionalImages?.build();
         _$failedField = 'constituents';
-        constituents.build();
+        _constituents?.build();
 
         _$failedField = 'measurements';
-        measurements.build();
+        _measurements?.build();
 
         _$failedField = 'tags';
-        tags.build();
+        _tags?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'InlineResponse200', _$failedField, e.toString());

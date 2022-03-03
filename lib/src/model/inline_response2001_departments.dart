@@ -15,11 +15,11 @@ part 'inline_response2001_departments.g.dart';
 abstract class InlineResponse2001Departments implements Built<InlineResponse2001Departments, InlineResponse2001DepartmentsBuilder> {
     /// Department ID as an integer. The departmentId is to be used as a query parameter on the `/objects` endpoint
     @BuiltValueField(wireName: r'departmentId')
-    num get departmentId;
+    num? get departmentId;
 
     /// Display name for a department
     @BuiltValueField(wireName: r'displayName')
-    String get displayName;
+    String? get displayName;
 
     InlineResponse2001Departments._();
 
@@ -43,14 +43,18 @@ class _$InlineResponse2001DepartmentsSerializer implements StructuredSerializer<
     Iterable<Object?> serialize(Serializers serializers, InlineResponse2001Departments object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'departmentId')
-            ..add(serializers.serialize(object.departmentId,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'displayName')
-            ..add(serializers.serialize(object.displayName,
-                specifiedType: const FullType(String)));
+        if (object.departmentId != null) {
+            result
+                ..add(r'departmentId')
+                ..add(serializers.serialize(object.departmentId,
+                    specifiedType: const FullType(num)));
+        }
+        if (object.displayName != null) {
+            result
+                ..add(r'displayName')
+                ..add(serializers.serialize(object.displayName,
+                    specifiedType: const FullType(String)));
+        }
         return result;
     }
 
