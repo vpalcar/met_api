@@ -36,7 +36,7 @@ void main() {
 
     // GET search
     //
-    //Future<InlineResponse2002> getSearch({ int q, bool isHighlight, bool title, bool tags, int departmentID, bool isOnView, bool artistOrCulture, String medium, bool hasImages, String geoLocation, int dateBeginAndDateEnd }) async
+    //Future<InlineResponse2002> getSearch({ String q, bool isHighlight, bool title, bool tags, int departmentID, bool isOnView, bool artistOrCulture, String medium, bool hasImages, String geoLocation, int dateBeginAndDateEnd }) async
     test('test getSearch', () async {
       // TODO
     });

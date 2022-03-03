@@ -597,7 +597,7 @@ paths:
       operationId: get-search
       parameters:
         - schema:
-            type: integer
+            type: string
           in: query
           name: q
           description: Returns a listing of all Object IDs for objects that contain the search query within the object’s data - Case sensitive

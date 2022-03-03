@@ -154,7 +154,7 @@ GET search
 import 'package:met_api/api.dart';
 
 final api = MetApi().getDefaultApi();
-final int q = 56; // int | Returns a listing of all Object IDs for objects that contain the search query within the object’s data - Case sensitive
+final String q = q_example; // String | Returns a listing of all Object IDs for objects that contain the search query within the object’s data - Case sensitive
 final bool isHighlight = true; // bool | Returns objects that match the query and are designated as highlights. Highlights are selected works of art from The Met Museum’s permanent collection representing different cultures and time periods.  Case sensitive.
 final bool title = true; // bool | Returns objects that match the query, specifically searching against the title field for objects.  Case sensitive.
 final bool tags = true; // bool | Returns objects that match the query, specifically searching against the subject keyword tags field for objects.  Case sensitive.
@@ -178,7 +178,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **int**| Returns a listing of all Object IDs for objects that contain the search query within the object’s data - Case sensitive | [optional] 
+ **q** | **String**| Returns a listing of all Object IDs for objects that contain the search query within the object’s data - Case sensitive | [optional] 
  **isHighlight** | **bool**| Returns objects that match the query and are designated as highlights. Highlights are selected works of art from The Met Museum’s permanent collection representing different cultures and time periods.  Case sensitive. | [optional] 
  **title** | **bool**| Returns objects that match the query, specifically searching against the title field for objects.  Case sensitive. | [optional] 
  **tags** | **bool**| Returns objects that match the query, specifically searching against the subject keyword tags field for objects.  Case sensitive. | [optional] 

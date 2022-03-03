@@ -291,7 +291,7 @@ class DefaultApi {
   /// Returns a [Future] containing a [Response] with a [InlineResponse2002] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<InlineResponse2002>> getSearch({ 
-    int? q,
+    String? q,
     bool? isHighlight,
     bool? title,
     bool? tags,
@@ -323,7 +323,7 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (q != null) r'q': encodeQueryParameter(_serializers, q, const FullType(int)),
+      if (q != null) r'q': encodeQueryParameter(_serializers, q, const FullType(String)),
       if (isHighlight != null) r'isHighlight': encodeQueryParameter(_serializers, isHighlight, const FullType(bool)),
       if (title != null) r'title': encodeQueryParameter(_serializers, title, const FullType(bool)),
       if (tags != null) r'tags': encodeQueryParameter(_serializers, tags, const FullType(bool)),
