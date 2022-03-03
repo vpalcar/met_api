@@ -325,9 +325,6 @@ paths:
                               type: number
                             Width:
                               type: number
-                          required:
-                            - Height
-                            - Width
                       required:
                         - elementName
                   creditLine:

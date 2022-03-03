@@ -9,9 +9,9 @@ part of 'inline_response200_element_measurements.dart';
 class _$InlineResponse200ElementMeasurements
     extends InlineResponse200ElementMeasurements {
   @override
-  final num height;
+  final num? height;
   @override
-  final num width;
+  final num? width;
 
   factory _$InlineResponse200ElementMeasurements(
           [void Function(InlineResponse200ElementMeasurementsBuilder)?
@@ -19,14 +19,8 @@ class _$InlineResponse200ElementMeasurements
       (new InlineResponse200ElementMeasurementsBuilder()..update(updates))
           .build();
 
-  _$InlineResponse200ElementMeasurements._(
-      {required this.height, required this.width})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        height, 'InlineResponse200ElementMeasurements', 'height');
-    BuiltValueNullFieldError.checkNotNull(
-        width, 'InlineResponse200ElementMeasurements', 'width');
-  }
+  _$InlineResponse200ElementMeasurements._({this.height, this.width})
+      : super._();
 
   @override
   InlineResponse200ElementMeasurements rebuild(
@@ -103,10 +97,7 @@ class InlineResponse200ElementMeasurementsBuilder
   _$InlineResponse200ElementMeasurements build() {
     final _$result = _$v ??
         new _$InlineResponse200ElementMeasurements._(
-            height: BuiltValueNullFieldError.checkNotNull(
-                height, 'InlineResponse200ElementMeasurements', 'height'),
-            width: BuiltValueNullFieldError.checkNotNull(
-                width, 'InlineResponse200ElementMeasurements', 'width'));
+            height: height, width: width);
     replace(_$result);
     return _$result;
   }

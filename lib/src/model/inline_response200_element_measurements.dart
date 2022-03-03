@@ -14,10 +14,10 @@ part 'inline_response200_element_measurements.g.dart';
 /// * [width] 
 abstract class InlineResponse200ElementMeasurements implements Built<InlineResponse200ElementMeasurements, InlineResponse200ElementMeasurementsBuilder> {
     @BuiltValueField(wireName: r'Height')
-    num get height;
+    num? get height;
 
     @BuiltValueField(wireName: r'Width')
-    num get width;
+    num? get width;
 
     InlineResponse200ElementMeasurements._();
 
@@ -41,14 +41,18 @@ class _$InlineResponse200ElementMeasurementsSerializer implements StructuredSeri
     Iterable<Object?> serialize(Serializers serializers, InlineResponse200ElementMeasurements object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object?>[];
-        result
-            ..add(r'Height')
-            ..add(serializers.serialize(object.height,
-                specifiedType: const FullType(num)));
-        result
-            ..add(r'Width')
-            ..add(serializers.serialize(object.width,
-                specifiedType: const FullType(num)));
+        if (object.height != null) {
+            result
+                ..add(r'Height')
+                ..add(serializers.serialize(object.height,
+                    specifiedType: const FullType(num)));
+        }
+        if (object.width != null) {
+            result
+                ..add(r'Width')
+                ..add(serializers.serialize(object.width,
+                    specifiedType: const FullType(num)));
+        }
         return result;
     }
 
