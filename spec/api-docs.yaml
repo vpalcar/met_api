@@ -1,853 +1,659 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
-  title: OpenAPI definition
-  version: v0
+  title: The Metropolitan Museum of Art Collection API
+  version: '1.0'
+  description: |-
+    The Metropolitan Museum of Art presents over 5,000 years of art from around the world for everyone to experience and enjoy. The Museum lives in two iconic sites in New York City—The Met Fifth Avenue and The Met Cloisters. Millions of people also take part in The Met experience online.
+    Since it was founded in 1870, The Met has always aspired to be more than a treasury of rare and beautiful objects. Every day, art comes alive in the Museum’s galleries and through its exhibitions and events, revealing both new ideas and unexpected connections across time and across cultures.
+    The Metropolitan Museum of Art provides select datasets of information on more than 470,000 artworks in its Collection for unrestricted commercial and noncommercial use. To the extent possible under law, The Metropolitan Museum of Art has waived all copyright and related or neighboring rights to this dataset using the [Creative Commons Zero license](https://creativecommons.org/publicdomain/zero/1.0). This work is published from the United States of America. These select datasets are now available for use in any media without permission or fee; they also include identifying data for artworks under copyright. The datasets support the search, use, and interaction with the Museum’s collection.
+    The Met’s Open Access datasets are available through our API. The API (RESTful web service in JSON format) gives access to all of The Met’s Open Access data and to corresponding high resolution images (JPEG format) that are in the public domain.
+    At this time, we do not require API users to register or obtain an API key to use the service. **Please limit request rate to 80 requests per second.**
+    For more information about the Metropolitan Museum of Art Collection API, please visit our  [Open Access Github page](https://github.com/metmuseum/openaccess).
+  contact:
+    email: openaccess@metmuseum.org
+    name: Open Access Team
+  termsOfService: 'https://www.metmuseum.org/information/terms-and-conditions'
 servers:
-- url: https://api.staging.goopti.com/user-service
-  description: Generated server url
+  - url: 'https://collectionapi.metmuseum.org/public/collection/v1'
 paths:
-  /profile:
+  /objects:
     get:
-      tags:
-      - profile-controller
-      operationId: getUserProfile
+      summary: GET object
+      tags: []
       responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
+        '200':
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/UserProfileResponse'
-    post:
-      tags:
-      - profile-controller
-      operationId: updateUserProfile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserProfileRequest'
+                type: integer
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: The total number of publicly-available objects
+                  objectIDs:
+                    type: array
+                    description: An array containing the object ID of publicly-available object
+                    items:
+                      type: integer
+          headers: {}
+      operationId: get-objects
+      parameters:
+        - schema:
+            type: string
+            format: date
+            example: YYYY-MM-DD
+          in: query
+          name: metadataDate
+          description: Returns any objects with updated data after this date
+        - schema:
+            type: string
+            example: 1 or 3|9|12
+          in: query
+          name: departmentIds
+          description: Returns any objects in a specific department - integers correspond to department IDs
+      description: Returns a listing of all valid Object IDs available to use
+  '/objects/{objectID}':
+    parameters:
+      - schema:
+          type: string
+        name: objectID
+        in: path
         required: true
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-                enum:
-                - 100 CONTINUE
-                - 101 SWITCHING_PROTOCOLS
-                - 102 PROCESSING
-                - 103 CHECKPOINT
-                - 200 OK
-                - 201 CREATED
-                - 202 ACCEPTED
-                - 203 NON_AUTHORITATIVE_INFORMATION
-                - 204 NO_CONTENT
-                - 205 RESET_CONTENT
-                - 206 PARTIAL_CONTENT
-                - 207 MULTI_STATUS
-                - 208 ALREADY_REPORTED
-                - 226 IM_USED
-                - 300 MULTIPLE_CHOICES
-                - 301 MOVED_PERMANENTLY
-                - 302 FOUND
-                - 302 MOVED_TEMPORARILY
-                - 303 SEE_OTHER
-                - 304 NOT_MODIFIED
-                - 305 USE_PROXY
-                - 307 TEMPORARY_REDIRECT
-                - 308 PERMANENT_REDIRECT
-                - 400 BAD_REQUEST
-                - 401 UNAUTHORIZED
-                - 402 PAYMENT_REQUIRED
-                - 403 FORBIDDEN
-                - 404 NOT_FOUND
-                - 405 METHOD_NOT_ALLOWED
-                - 406 NOT_ACCEPTABLE
-                - 407 PROXY_AUTHENTICATION_REQUIRED
-                - 408 REQUEST_TIMEOUT
-                - 409 CONFLICT
-                - 410 GONE
-                - 411 LENGTH_REQUIRED
-                - 412 PRECONDITION_FAILED
-                - 413 PAYLOAD_TOO_LARGE
-                - 413 REQUEST_ENTITY_TOO_LARGE
-                - 414 URI_TOO_LONG
-                - 414 REQUEST_URI_TOO_LONG
-                - 415 UNSUPPORTED_MEDIA_TYPE
-                - 416 REQUESTED_RANGE_NOT_SATISFIABLE
-                - 417 EXPECTATION_FAILED
-                - 418 I_AM_A_TEAPOT
-                - 419 INSUFFICIENT_SPACE_ON_RESOURCE
-                - 420 METHOD_FAILURE
-                - 421 DESTINATION_LOCKED
-                - 422 UNPROCESSABLE_ENTITY
-                - 423 LOCKED
-                - 424 FAILED_DEPENDENCY
-                - 425 TOO_EARLY
-                - 426 UPGRADE_REQUIRED
-                - 428 PRECONDITION_REQUIRED
-                - 429 TOO_MANY_REQUESTS
-                - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
-                - 451 UNAVAILABLE_FOR_LEGAL_REASONS
-                - 500 INTERNAL_SERVER_ERROR
-                - 501 NOT_IMPLEMENTED
-                - 502 BAD_GATEWAY
-                - 503 SERVICE_UNAVAILABLE
-                - 504 GATEWAY_TIMEOUT
-                - 505 HTTP_VERSION_NOT_SUPPORTED
-                - 506 VARIANT_ALSO_NEGOTIATES
-                - 507 INSUFFICIENT_STORAGE
-                - 508 LOOP_DETECTED
-                - 509 BANDWIDTH_LIMIT_EXCEEDED
-                - 510 NOT_EXTENDED
-                - 511 NETWORK_AUTHENTICATION_REQUIRED
-  /profile/profilePhoto:
+        description: The unique Object ID for an object
     get:
-      tags:
-      - profile-controller
-      operationId: getUserProfilePhoto
+      summary: GET objects
+      tags: []
       responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
+        '200':
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                type: string
-    post:
-      tags:
-      - profile-controller
-      operationId: uploadUserProfilePhoto
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    objectID: 45734
+                    isHighlight: false
+                    accessionNumber: 36.100.45
+                    accessionYear: '1936'
+                    isPublicDomain: true
+                    primaryImage: 'https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg'
+                    primaryImageSmall: 'https://images.metmuseum.org/CRDImages/as/web-large/DP251139.jpg'
+                    additionalImages:
+                      - 'https://images.metmuseum.org/CRDImages/as/original/DP251138.jpg'
+                      - 'https://images.metmuseum.org/CRDImages/as/original/DP251120.jpg'
+                    constituents:
+                      - constituentID: 11986
+                        role: Artist
+                        name: Kiyohara Yukinobu
+                        constituentULAN_URL: 'http://vocab.getty.edu/page/ulan/500034433'
+                        constituentWikidata_URL: 'https://www.wikidata.org/wiki/Q11560527'
+                        gender: Female
+                    department: Asian Art
+                    objectName: Hanging scroll
+                    title: Quail and Millet
+                    culture: Japan
+                    period: Edo period (1615–1868)
+                    dynasty: ''
+                    reign: ''
+                    portfolio: ''
+                    artistRole: Artist
+                    artistPrefix: ''
+                    artistDisplayName: Kiyohara Yukinobu
+                    artistDisplayBio: 'Japanese, 1643–1682'
+                    artistSuffix: ''
+                    artistAlphaSort: Kiyohara Yukinobu
+                    artistNationality: Japanese
+                    artistBeginDate: '1643'
+                    artistEndDate: '1682'
+                    artistGender: Female
+                    artistWikidata_URL: 'https://www.wikidata.org/wiki/Q11560527'
+                    artistULAN_URL: 'http://vocab.getty.edu/page/ulan/500034433'
+                    objectDate: late 17th century
+                    objectBeginDate: 1667
+                    objectEndDate: 1682
+                    medium: Hanging scroll; ink and color on silk
+                    dimensions: 46 5/8 x 18 3/4 in. (118.4 x 47.6 cm)
+                    measurements:
+                      - elementName: Overall
+                        elementDescription: null
+                        elementMeasurements:
+                          Height: 118.4
+                          Width: 47.6
+                    creditLine: 'The Howard Mansfield Collection, Purchase, Rogers Fund, 1936'
+                    geographyType: ''
+                    city: ''
+                    state: ''
+                    county: ''
+                    country: ''
+                    region: ''
+                    subregion: ''
+                    locale: ''
+                    locus: ''
+                    excavation: ''
+                    river: ''
+                    classification: Paintings
+                    rightsAndReproduction: ''
+                    linkResource: ''
+                    metadataDate: '2020-09-14T12:26:37.48Z'
+                    repository: 'Metropolitan Museum of Art, New York, NY'
+                    objectURL: 'https://www.metmuseum.org/art/collection/search/45734'
+                    tags:
+                      - term: Birds
+                        AAT_URL: 'http://vocab.getty.edu/page/aat/300266506'
+                        Wikidata_URL: 'https://www.wikidata.org/wiki/Q5113'
+                    objectWikidata_URL: 'https://www.wikidata.org/wiki/Q29910832'
+                    isTimelineWork: false
+                    GalleryNumber: ''
+                properties:
+                  objectID:
+                    type: number
+                    description: 'Identifying number for each artwork (unique, can be used as key field). Example: 437133'
+                  isHighlight:
+                    type: boolean
+                    description: 'When "true" indicates a popular and important artwork in the collection. Example: Vincent van Gogh''s "Wheat Field with Cypresses"'
+                  accessionNumber:
+                    type: string
+                    minLength: 1
+                    description: 'Identifying number for each artwork (not always unique). Example: "67.241"'
+                  accessionYear:
+                    type: string
+                    minLength: 1
+                    description: 'Year the artwork was acquired. Example: "1921"'
+                  isPublicDomain:
+                    type: boolean
+                    description: 'When "true" indicates an artwork in the Public Domain. Example: Vincent van Gogh''s "Wheat Field with Cypresses"'
+                  primaryImage:
+                    type: string
+                    minLength: 1
+                    description: 'URL to the primary image of an object in JPEG format. Example: "https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg"'
+                  primaryImageSmall:
+                    type: string
+                    minLength: 1
+                    description: 'URL to the lower-res primary image of an object in JPEG format. Example - "https://images.metmuseum.org/CRDImages/ep/web-large/DT1567.jpg"'
+                  additionalImages:
+                    type: array
+                    description: 'An array containing URLs to the additional images of an object in JPEG format. Example: ["https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-004.jpg", "https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-003.jpg", "https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-002.jpg", "https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-001.jpg"]'
+                    items:
+                      type: object
+                  constituents:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    description: 'An array containing the constituents associated with an object, with the constituent''s role, name, ULAN URL, Wikidata URL, and gender, when available (currently contains female designations only). Example: [{"constituentID": 161708,"role": "Artist","name": "Louise Bourgeois","constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500057350","constituentWikidata_URL": "https://www.wikidata.org/wiki/Q159409","gender": "Female"}]'
+                    items:
+                      type: object
+                      properties:
+                        constituentID:
+                          type: number
+                        role:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                        constituentULAN_URL:
+                          type: string
+                          minLength: 1
+                        constituentWikidata_URL:
+                          type: string
+                          minLength: 1
+                        gender:
+                          type: string
+                          minLength: 1
+                      required:
+                        - constituentID
+                        - role
+                        - name
+                        - constituentULAN_URL
+                        - constituentWikidata_URL
+                        - gender
+                  department:
+                    type: string
+                    minLength: 1
+                    description: 'Indicates The Met''s curatorial department responsible for the artwork. Example: "Egyptian Art"'
+                  objectName:
+                    type: string
+                    minLength: 1
+                    description: 'Describes the physical type of the object. Example: "Dress", "Painting", "Photograph", or "Vase"'
+                  title:
+                    type: string
+                    minLength: 1
+                    description: 'Title, identifying phrase, or name given to a work of art. Example: "Wheat Field with Cypresses"'
+                  culture:
+                    type: string
+                    minLength: 1
+                    description: 'Information about the culture, or people from which an object was created. Example: "Afghan", "British", "North African"'
+                  period:
+                    type: string
+                    minLength: 1
+                    description: 'Time or time period when an object was created. Example: "Ming dynasty (1368-1644)", "Middle Bronze Age"'
+                  dynasty:
+                    type: string
+                    description: 'Dynasty (a succession of rulers of the same line or family) under which an object was created. Example: "Kingdom of Benin", "Dynasty 12" '
+                  reign:
+                    type: string
+                    description: 'Reign of a monarch or ruler under which an object was created. Example: "Amenhotep III", "Darius I", "Louis XVI"'
+                  portfolio:
+                    type: string
+                    description: 'A set of works created as a group or published as a series. Example: "Birds of America", "The Hudson River Portfolio", "Speculum Romanae Magnificentiae"'
+                  artistRole:
+                    type: string
+                    minLength: 1
+                    description: 'Role of the artist related to the type of artwork or object that was created. Example: "Artist for Painting", "Designer for Dress"'
+                  artistPrefix:
+                    type: string
+                    description: 'Describes the extent of creation or describes an attribution qualifier to the information given in the artistRole field. Example: "In the Style of", "Possibly by", "Written in French by"'
+                  artistDisplayName:
+                    type: string
+                    minLength: 1
+                    description: 'Artist name in the correct order for display. Example: "Vincent van Gogh"'
+                  artistDisplayBio:
+                    type: string
+                    minLength: 1
+                    description: 'Nationality and life dates of an artist, also includes birth and death city when known. Example: "Dutch, Zundert 1853–1890 Auvers-sur-Oise"'
+                  artistSuffix:
+                    type: string
+                    description: 'Used to record complex information that qualifies the role of a constituent, e.g. extent of participation by the Constituent (verso only, and followers). Example: "verso only"'
+                  artistAlphaSort:
+                    type: string
+                    minLength: 1
+                    description: 'Used to sort artist names alphabetically. Last Name, First Name, Middle Name, Suffix, and Honorific fields, in that order. Example: "Gogh, Vincent van"'
+                  artistNationality:
+                    type: string
+                    minLength: 1
+                    description: 'National, geopolitical, cultural, or ethnic origins or affiliation of the creator or institution that made the artwork. Example: "Spanish"; "Dutch"; "French, born Romania"'
+                  artistBeginDate:
+                    type: string
+                    minLength: 1
+                    description: 'Year the artist was born. Example: "1840"'
+                  artistEndDate:
+                    type: string
+                    minLength: 1
+                    description: 'Year the artist died. Exaple: "1926"'
+                  artistGender:
+                    type: string
+                    minLength: 1
+                    description: 'Gender of the artist (currently contains female designations only). Example: "female"'
+                  artistWikidata_URL:
+                    type: string
+                    minLength: 1
+                    description: 'Wikidata URL for the artist. Example: "https://www.wikidata.org/wiki/Q694774"'
+                  artistULAN_URL:
+                    type: string
+                    minLength: 1
+                    description: 'ULAN URL for the . Example: "https://vocab.getty.edu/page/ulan/500003169"'
+                  objectDate:
+                    type: string
+                    minLength: 1
+                    description: 'Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created. Example: "1865–67", "19th century", "ca. 1796"'
+                  objectBeginDate:
+                    type: number
+                    description: 'Machine readable date indicating the year the artwork was started to be created. Example: 1867, 1100, -900'
+                  objectEndDate:
+                    type: number
+                    description: 'Machine readable date indicating the year the artwork was completed (may be the same year or different year than the objectBeginDate). Example: 1888, 1100, -850'
+                  medium:
+                    type: string
+                    minLength: 1
+                    description: 'Refers to the materials that were used to create the artwork. Example: "Oil on canvas", "Watercolor", "Gold"'
+                  dimensions:
+                    type: string
+                    minLength: 1
+                    description: 'Size of the artwork or object. Example: "16 x 20 in. (40.6 x 50.8 cm)"'
+                  measurements:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    description: 'Array of elements, each with a name, description, and set of measurements. Spatial measurements are in centimeters; weights are in kg. Example: [ { "elementName": "Overall", "elementDescription": "Temple proper", "elementMeasurements": { "Height": 640.0813, "Length": 1249.6825, "Width": 640.0813 } } ]'
+                    items:
+                      type: object
+                      properties:
+                        elementName:
+                          type: string
+                          minLength: 1
+                        elementDescription: {}
+                        elementMeasurements:
+                          type: object
+                          properties:
+                            Height:
+                              type: number
+                            Width:
+                              type: number
+                          required:
+                            - Height
+                            - Width
+                      required:
+                        - elementName
+                  creditLine:
+                    type: string
+                    minLength: 1
+                    description: 'Text acknowledging the source or origin of the artwork and the year the object was acquired by the museum. Example: "Robert Lehman Collection, 1975"'
+                  geographyType:
+                    type: string
+                    description: 'Qualifying information that describes the relationship of the place catalogued in the geography fields to the object that is being catalogued. Example: "Made in", "From", "Attributed to"'
+                  city:
+                    type: string
+                    description: 'City where the artwork was created. Example: "New York", "Paris", "Tokyo"'
+                  state:
+                    type: string
+                    description: 'State or province where the artwork was created, may sometimes overlap with County. Example: "Alamance", "Derbyshire", "Brooklyn"'
+                  county:
+                    type: string
+                    description: 'County where the artwork was created, may sometimes overlap with State. Example: "Orange County", "Staffordshire", "Brooklyn"'
+                  country:
+                    type: string
+                    description: 'Country where the artwork was created or found. Example: "China", "France", "India"'
+                  region:
+                    type: string
+                    description: 'Geographic location more specific than country, but more specific than subregion, where the artwork was created or found (frequently null). Example: "Bohemia", "Midwest", "Southern"'
+                  subregion:
+                    type: string
+                    description: 'Geographic location more specific than Region, but less specific than Locale, where the artwork was created or found (frequently null). Example: "Malqata", "Deir el-Bahri", "Valley of the Kings"'
+                  locale:
+                    type: string
+                    description: 'Geographic location more specific than subregion, but more specific than locus, where the artwork was found (frequently null). Example: "Tomb of Perneb", "Temple of Hatshepsut", "Palace of Ramesses II"'
+                  locus:
+                    type: string
+                    description: 'Geographic location that is less specific than locale, but more specific than excavation, where the artwork was found (frequently null). Example: "1st chamber W. wall"; "Burial C 2, In coffin"; "Pit 477"'
+                  excavation:
+                    type: string
+                    description: 'The name of an excavation. The excavation field usually includes dates of excavation. Example: "MMA excavations, 1923–24"; "Khashaba excavations, 1910–11"; "Carnarvon excavations, 1912"'
+                  river:
+                    type: string
+                    description: 'River is a natural watercourse, usually freshwater, flowing toward an ocean, a lake, a sea or another river related to the origins of an artwork (frequently null). Example: "Mississippi River", "Nile River", "River Thames"'
+                  classification:
+                    type: string
+                    minLength: 1
+                    description: 'General term describing the artwork type. Example: "Basketry", "Ceramics", "Paintings"'
+                  rightsAndReproduction:
+                    type: string
+                    description: 'Credit line for artworks still under copyright. Example: "© 2018 Estate of Pablo Picasso / Artists Rights Society (ARS), New York"'
+                  linkResource:
+                    type: string
+                    description: 'URL to object''s page on metmuseum.org. Example: "https://www.metmuseum.org/art/collection/search/547802"'
+                  metadataDate:
+                    type: string
+                    minLength: 1
+                    description: 'Date metadata was last updated. Example: 2018-10-17T10:24:43.197Z'
+                  repository:
+                    type: string
+                    minLength: 1
+                    description: 'Example: "Metropolitan Museum of Art, New York, NY"'
+                  objectURL:
+                    type: string
+                    minLength: 1
+                    description: 'URL to object''s page on metmuseum.org. Example: "https://www.metmuseum.org/art/collection/search/547802"'
+                  tags:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    description: 'An array of subject keyword tags associated with the object and their respective AAT URL. Example: [{"term": "Abstraction","AAT_URL": "http://vocab.getty.edu/page/aat/300056508","Wikidata_URL": "https://www.wikidata.org/wiki/Q162150"}]'
+                    items:
+                      type: object
+                      properties:
+                        term:
+                          type: string
+                          minLength: 1
+                        AAT_URL:
+                          type: string
+                          minLength: 1
+                        Wikidata_URL:
+                          type: string
+                          minLength: 1
+                      required:
+                        - term
+                        - AAT_URL
+                        - Wikidata_URL
+                  objectWikidata_URL:
+                    type: string
+                    minLength: 1
+                    description: 'Wiki data URL for the object. Example: "https://www.wikidata.org/wiki/Q432253"'
+                  isTimelineWork:
+                    type: boolean
+                    description: 'Whether the object is on the Timeline of Art History website. Example: "true"'
+                  GalleryNumber:
+                    type: string
+                    description: 'Gallery number, where available. Example: "131"'
+                required:
+                  - objectID
+                  - isHighlight
+                  - accessionNumber
+                  - accessionYear
+                  - isPublicDomain
+                  - primaryImage
+                  - primaryImageSmall
+                  - additionalImages
+                  - constituents
+                  - department
+                  - objectName
+                  - title
+                  - culture
+                  - period
+                  - dynasty
+                  - reign
+                  - portfolio
+                  - artistRole
+                  - artistPrefix
+                  - artistDisplayName
+                  - artistDisplayBio
+                  - artistSuffix
+                  - artistAlphaSort
+                  - artistNationality
+                  - artistBeginDate
+                  - artistEndDate
+                  - artistGender
+                  - artistWikidata_URL
+                  - artistULAN_URL
+                  - objectDate
+                  - objectBeginDate
+                  - objectEndDate
+                  - medium
+                  - dimensions
+                  - measurements
+                  - creditLine
+                  - geographyType
+                  - city
+                  - state
+                  - county
+                  - country
+                  - region
+                  - subregion
+                  - locale
+                  - locus
+                  - excavation
+                  - river
+                  - classification
+                  - rightsAndReproduction
+                  - linkResource
+                  - metadataDate
+                  - repository
+                  - objectURL
+                  - tags
+                  - objectWikidata_URL
+                  - isTimelineWork
+                  - GalleryNumber
+      operationId: get-objects-objectID
+      description: 'Returns a record for an object, containing all open access data about that object, including its image (if the image is available under Open Access)'
+      parameters: []
       requestBody:
         content:
           application/json:
             schema:
-              required:
-              - image
               type: object
-              properties:
-                image:
-                  type: string
-                  format: binary
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-                enum:
-                - 100 CONTINUE
-                - 101 SWITCHING_PROTOCOLS
-                - 102 PROCESSING
-                - 103 CHECKPOINT
-                - 200 OK
-                - 201 CREATED
-                - 202 ACCEPTED
-                - 203 NON_AUTHORITATIVE_INFORMATION
-                - 204 NO_CONTENT
-                - 205 RESET_CONTENT
-                - 206 PARTIAL_CONTENT
-                - 207 MULTI_STATUS
-                - 208 ALREADY_REPORTED
-                - 226 IM_USED
-                - 300 MULTIPLE_CHOICES
-                - 301 MOVED_PERMANENTLY
-                - 302 FOUND
-                - 302 MOVED_TEMPORARILY
-                - 303 SEE_OTHER
-                - 304 NOT_MODIFIED
-                - 305 USE_PROXY
-                - 307 TEMPORARY_REDIRECT
-                - 308 PERMANENT_REDIRECT
-                - 400 BAD_REQUEST
-                - 401 UNAUTHORIZED
-                - 402 PAYMENT_REQUIRED
-                - 403 FORBIDDEN
-                - 404 NOT_FOUND
-                - 405 METHOD_NOT_ALLOWED
-                - 406 NOT_ACCEPTABLE
-                - 407 PROXY_AUTHENTICATION_REQUIRED
-                - 408 REQUEST_TIMEOUT
-                - 409 CONFLICT
-                - 410 GONE
-                - 411 LENGTH_REQUIRED
-                - 412 PRECONDITION_FAILED
-                - 413 PAYLOAD_TOO_LARGE
-                - 413 REQUEST_ENTITY_TOO_LARGE
-                - 414 URI_TOO_LONG
-                - 414 REQUEST_URI_TOO_LONG
-                - 415 UNSUPPORTED_MEDIA_TYPE
-                - 416 REQUESTED_RANGE_NOT_SATISFIABLE
-                - 417 EXPECTATION_FAILED
-                - 418 I_AM_A_TEAPOT
-                - 419 INSUFFICIENT_SPACE_ON_RESOURCE
-                - 420 METHOD_FAILURE
-                - 421 DESTINATION_LOCKED
-                - 422 UNPROCESSABLE_ENTITY
-                - 423 LOCKED
-                - 424 FAILED_DEPENDENCY
-                - 425 TOO_EARLY
-                - 426 UPGRADE_REQUIRED
-                - 428 PRECONDITION_REQUIRED
-                - 429 TOO_MANY_REQUESTS
-                - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
-                - 451 UNAVAILABLE_FOR_LEGAL_REASONS
-                - 500 INTERNAL_SERVER_ERROR
-                - 501 NOT_IMPLEMENTED
-                - 502 BAD_GATEWAY
-                - 503 SERVICE_UNAVAILABLE
-                - 504 GATEWAY_TIMEOUT
-                - 505 HTTP_VERSION_NOT_SUPPORTED
-                - 506 VARIANT_ALSO_NEGOTIATES
-                - 507 INSUFFICIENT_STORAGE
-                - 508 LOOP_DETECTED
-                - 509 BANDWIDTH_LIMIT_EXCEEDED
-                - 510 NOT_EXTENDED
-                - 511 NETWORK_AUTHENTICATION_REQUIRED
-  /profile/idPhoto:
-    post:
-      tags:
-      - profile-controller
-      operationId: uploadIdPhoto
-      requestBody:
-        content:
-          application/json:
-            schema:
-              required:
-              - image
-              type: object
-              properties:
-                image:
-                  type: string
-                  format: binary
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-                enum:
-                - 100 CONTINUE
-                - 101 SWITCHING_PROTOCOLS
-                - 102 PROCESSING
-                - 103 CHECKPOINT
-                - 200 OK
-                - 201 CREATED
-                - 202 ACCEPTED
-                - 203 NON_AUTHORITATIVE_INFORMATION
-                - 204 NO_CONTENT
-                - 205 RESET_CONTENT
-                - 206 PARTIAL_CONTENT
-                - 207 MULTI_STATUS
-                - 208 ALREADY_REPORTED
-                - 226 IM_USED
-                - 300 MULTIPLE_CHOICES
-                - 301 MOVED_PERMANENTLY
-                - 302 FOUND
-                - 302 MOVED_TEMPORARILY
-                - 303 SEE_OTHER
-                - 304 NOT_MODIFIED
-                - 305 USE_PROXY
-                - 307 TEMPORARY_REDIRECT
-                - 308 PERMANENT_REDIRECT
-                - 400 BAD_REQUEST
-                - 401 UNAUTHORIZED
-                - 402 PAYMENT_REQUIRED
-                - 403 FORBIDDEN
-                - 404 NOT_FOUND
-                - 405 METHOD_NOT_ALLOWED
-                - 406 NOT_ACCEPTABLE
-                - 407 PROXY_AUTHENTICATION_REQUIRED
-                - 408 REQUEST_TIMEOUT
-                - 409 CONFLICT
-                - 410 GONE
-                - 411 LENGTH_REQUIRED
-                - 412 PRECONDITION_FAILED
-                - 413 PAYLOAD_TOO_LARGE
-                - 413 REQUEST_ENTITY_TOO_LARGE
-                - 414 URI_TOO_LONG
-                - 414 REQUEST_URI_TOO_LONG
-                - 415 UNSUPPORTED_MEDIA_TYPE
-                - 416 REQUESTED_RANGE_NOT_SATISFIABLE
-                - 417 EXPECTATION_FAILED
-                - 418 I_AM_A_TEAPOT
-                - 419 INSUFFICIENT_SPACE_ON_RESOURCE
-                - 420 METHOD_FAILURE
-                - 421 DESTINATION_LOCKED
-                - 422 UNPROCESSABLE_ENTITY
-                - 423 LOCKED
-                - 424 FAILED_DEPENDENCY
-                - 425 TOO_EARLY
-                - 426 UPGRADE_REQUIRED
-                - 428 PRECONDITION_REQUIRED
-                - 429 TOO_MANY_REQUESTS
-                - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
-                - 451 UNAVAILABLE_FOR_LEGAL_REASONS
-                - 500 INTERNAL_SERVER_ERROR
-                - 501 NOT_IMPLEMENTED
-                - 502 BAD_GATEWAY
-                - 503 SERVICE_UNAVAILABLE
-                - 504 GATEWAY_TIMEOUT
-                - 505 HTTP_VERSION_NOT_SUPPORTED
-                - 506 VARIANT_ALSO_NEGOTIATES
-                - 507 INSUFFICIENT_STORAGE
-                - 508 LOOP_DETECTED
-                - 509 BANDWIDTH_LIMIT_EXCEEDED
-                - 510 NOT_EXTENDED
-                - 511 NETWORK_AUTHENTICATION_REQUIRED
-  /profile/driverLicencePhoto:
-    post:
-      tags:
-      - profile-controller
-      operationId: uploadDriverLicencePhoto
-      requestBody:
-        content:
-          application/json:
-            schema:
-              required:
-              - image
-              type: object
-              properties:
-                image:
-                  type: string
-                  format: binary
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-                enum:
-                - 100 CONTINUE
-                - 101 SWITCHING_PROTOCOLS
-                - 102 PROCESSING
-                - 103 CHECKPOINT
-                - 200 OK
-                - 201 CREATED
-                - 202 ACCEPTED
-                - 203 NON_AUTHORITATIVE_INFORMATION
-                - 204 NO_CONTENT
-                - 205 RESET_CONTENT
-                - 206 PARTIAL_CONTENT
-                - 207 MULTI_STATUS
-                - 208 ALREADY_REPORTED
-                - 226 IM_USED
-                - 300 MULTIPLE_CHOICES
-                - 301 MOVED_PERMANENTLY
-                - 302 FOUND
-                - 302 MOVED_TEMPORARILY
-                - 303 SEE_OTHER
-                - 304 NOT_MODIFIED
-                - 305 USE_PROXY
-                - 307 TEMPORARY_REDIRECT
-                - 308 PERMANENT_REDIRECT
-                - 400 BAD_REQUEST
-                - 401 UNAUTHORIZED
-                - 402 PAYMENT_REQUIRED
-                - 403 FORBIDDEN
-                - 404 NOT_FOUND
-                - 405 METHOD_NOT_ALLOWED
-                - 406 NOT_ACCEPTABLE
-                - 407 PROXY_AUTHENTICATION_REQUIRED
-                - 408 REQUEST_TIMEOUT
-                - 409 CONFLICT
-                - 410 GONE
-                - 411 LENGTH_REQUIRED
-                - 412 PRECONDITION_FAILED
-                - 413 PAYLOAD_TOO_LARGE
-                - 413 REQUEST_ENTITY_TOO_LARGE
-                - 414 URI_TOO_LONG
-                - 414 REQUEST_URI_TOO_LONG
-                - 415 UNSUPPORTED_MEDIA_TYPE
-                - 416 REQUESTED_RANGE_NOT_SATISFIABLE
-                - 417 EXPECTATION_FAILED
-                - 418 I_AM_A_TEAPOT
-                - 419 INSUFFICIENT_SPACE_ON_RESOURCE
-                - 420 METHOD_FAILURE
-                - 421 DESTINATION_LOCKED
-                - 422 UNPROCESSABLE_ENTITY
-                - 423 LOCKED
-                - 424 FAILED_DEPENDENCY
-                - 425 TOO_EARLY
-                - 426 UPGRADE_REQUIRED
-                - 428 PRECONDITION_REQUIRED
-                - 429 TOO_MANY_REQUESTS
-                - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
-                - 451 UNAVAILABLE_FOR_LEGAL_REASONS
-                - 500 INTERNAL_SERVER_ERROR
-                - 501 NOT_IMPLEMENTED
-                - 502 BAD_GATEWAY
-                - 503 SERVICE_UNAVAILABLE
-                - 504 GATEWAY_TIMEOUT
-                - 505 HTTP_VERSION_NOT_SUPPORTED
-                - 506 VARIANT_ALSO_NEGOTIATES
-                - 507 INSUFFICIENT_STORAGE
-                - 508 LOOP_DETECTED
-                - 509 BANDWIDTH_LIMIT_EXCEEDED
-                - 510 NOT_EXTENDED
-                - 511 NETWORK_AUTHENTICATION_REQUIRED
-  /auth/token:
-    post:
-      tags:
-      - authentication-controller
-      operationId: token
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TokenRequest'
-        required: true
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/TokenResponse'
-  /auth/revoke:
-    post:
-      tags:
-      - authentication-controller
-      operationId: revoke
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TokenRequest'
-        required: true
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-                enum:
-                - 100 CONTINUE
-                - 101 SWITCHING_PROTOCOLS
-                - 102 PROCESSING
-                - 103 CHECKPOINT
-                - 200 OK
-                - 201 CREATED
-                - 202 ACCEPTED
-                - 203 NON_AUTHORITATIVE_INFORMATION
-                - 204 NO_CONTENT
-                - 205 RESET_CONTENT
-                - 206 PARTIAL_CONTENT
-                - 207 MULTI_STATUS
-                - 208 ALREADY_REPORTED
-                - 226 IM_USED
-                - 300 MULTIPLE_CHOICES
-                - 301 MOVED_PERMANENTLY
-                - 302 FOUND
-                - 302 MOVED_TEMPORARILY
-                - 303 SEE_OTHER
-                - 304 NOT_MODIFIED
-                - 305 USE_PROXY
-                - 307 TEMPORARY_REDIRECT
-                - 308 PERMANENT_REDIRECT
-                - 400 BAD_REQUEST
-                - 401 UNAUTHORIZED
-                - 402 PAYMENT_REQUIRED
-                - 403 FORBIDDEN
-                - 404 NOT_FOUND
-                - 405 METHOD_NOT_ALLOWED
-                - 406 NOT_ACCEPTABLE
-                - 407 PROXY_AUTHENTICATION_REQUIRED
-                - 408 REQUEST_TIMEOUT
-                - 409 CONFLICT
-                - 410 GONE
-                - 411 LENGTH_REQUIRED
-                - 412 PRECONDITION_FAILED
-                - 413 PAYLOAD_TOO_LARGE
-                - 413 REQUEST_ENTITY_TOO_LARGE
-                - 414 URI_TOO_LONG
-                - 414 REQUEST_URI_TOO_LONG
-                - 415 UNSUPPORTED_MEDIA_TYPE
-                - 416 REQUESTED_RANGE_NOT_SATISFIABLE
-                - 417 EXPECTATION_FAILED
-                - 418 I_AM_A_TEAPOT
-                - 419 INSUFFICIENT_SPACE_ON_RESOURCE
-                - 420 METHOD_FAILURE
-                - 421 DESTINATION_LOCKED
-                - 422 UNPROCESSABLE_ENTITY
-                - 423 LOCKED
-                - 424 FAILED_DEPENDENCY
-                - 425 TOO_EARLY
-                - 426 UPGRADE_REQUIRED
-                - 428 PRECONDITION_REQUIRED
-                - 429 TOO_MANY_REQUESTS
-                - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
-                - 451 UNAVAILABLE_FOR_LEGAL_REASONS
-                - 500 INTERNAL_SERVER_ERROR
-                - 501 NOT_IMPLEMENTED
-                - 502 BAD_GATEWAY
-                - 503 SERVICE_UNAVAILABLE
-                - 504 GATEWAY_TIMEOUT
-                - 505 HTTP_VERSION_NOT_SUPPORTED
-                - 506 VARIANT_ALSO_NEGOTIATES
-                - 507 INSUFFICIENT_STORAGE
-                - 508 LOOP_DETECTED
-                - 509 BANDWIDTH_LIMIT_EXCEEDED
-                - 510 NOT_EXTENDED
-                - 511 NETWORK_AUTHENTICATION_REQUIRED
-  /auth/authorize:
-    post:
-      tags:
-      - authentication-controller
-      operationId: authorize
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuthorizationRequest'
-        required: true
-      responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/AuthorizationResponse'
-  /api/info:
+              properties: {}
+  /departments:
     get:
-      tags:
-      - api-controller
-      operationId: info
+      summary: GET departments
+      tags: []
       responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
+        '200':
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                type: string
-  /api/driver:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    departments:
+                      - departmentId: 1
+                        displayName: American Decorative Arts
+                      - departmentId: 3
+                        displayName: Ancient Near Eastern Art
+                      - departmentId: 4
+                        displayName: Arms and Armor
+                      - departmentId: 5
+                        displayName: 'Arts of Africa, Oceania, and the Americas'
+                      - departmentId: 6
+                        displayName: Asian Art
+                      - departmentId: 7
+                        displayName: The Cloisters
+                      - departmentId: 8
+                        displayName: The Costume Institute
+                      - departmentId: 9
+                        displayName: Drawings and Prints
+                      - departmentId: 10
+                        displayName: Egyptian Art
+                      - departmentId: 11
+                        displayName: European Paintings
+                      - departmentId: 12
+                        displayName: European Sculpture and Decorative Arts
+                      - departmentId: 13
+                        displayName: Greek and Roman Art
+                      - departmentId: 14
+                        displayName: Islamic Art
+                      - departmentId: 15
+                        displayName: The Robert Lehman Collection
+                      - departmentId: 16
+                        displayName: The Libraries
+                      - departmentId: 17
+                        displayName: Medieval Art
+                      - departmentId: 18
+                        displayName: Musical Instruments
+                      - departmentId: 19
+                        displayName: Photographs
+                      - departmentId: 21
+                        displayName: Modern Art
+                properties:
+                  departments:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    description: An array containing the JSON objects that contain each department's departmentId and display name. The departmentId is to be used as a query parameter on the `/objects` endpoint
+                    items:
+                      type: object
+                      properties:
+                        departmentId:
+                          type: number
+                          description: Department ID as an integer. The departmentId is to be used as a query parameter on the `/objects` endpoint
+                        displayName:
+                          type: string
+                          minLength: 1
+                          description: Display name for a department
+                      required:
+                        - departmentId
+                        - displayName
+                required:
+                  - departments
+      operationId: get-departments
+      parameters: []
+      description: Returns a listing of all departments
+  /search:
     get:
-      tags:
-      - api-controller
-      operationId: driverInfo
+      summary: GET search
+      tags: []
       responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "500":
-          description: Internal Server Error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorInfo'
-        "200":
+        '200':
           description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                type: string
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    total: 27
+                    objectIDs:
+                      - 1
+                      - 2
+                      - 3
+                properties:
+                  total:
+                    type: number
+                    description: The total number of publicly-available objects
+                  objectIDs:
+                    type: array
+                    description: An array containing the object ID of publicly-available object
+                    items: {}
+                required:
+                  - total
+                  - objectIDs
+      operationId: get-search
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: q
+          description: Returns a listing of all Object IDs for objects that contain the search query within the object’s data - Case sensitive
+        - schema:
+            type: boolean
+          in: query
+          name: isHighlight
+          description: Returns objects that match the query and are designated as highlights. Highlights are selected works of art from The Met Museum’s permanent collection representing different cultures and time periods.  Case sensitive.
+        - schema:
+            type: boolean
+          in: query
+          name: title
+          description: 'Returns objects that match the query, specifically searching against the title field for objects.  Case sensitive.'
+        - schema:
+            type: boolean
+          in: query
+          name: tags
+          description: 'Returns objects that match the query, specifically searching against the subject keyword tags field for objects.  Case sensitive.'
+        - schema:
+            type: integer
+          in: query
+          name: departmentID
+          description: 'Returns objects that are a part of a specific department. For a list of departments and department IDs, refer to our /department endpoint: https://collectionapi.metmuseum.org/public/collection/v1/departments'
+        - schema:
+            type: boolean
+          in: query
+          name: isOnView
+          description: Returns objects that match the query and are on view in the museum.
+        - schema:
+            type: boolean
+          in: query
+          name: artistOrCulture
+          description: 'Returns objects that match the query, specifically searching against the artist name or culture field for objects.  Case sensitive.'
+        - schema:
+            type: string
+            example: '"Ceramics", "Furniture", "Paintings", "Sculpture", "Textiles", etc.'
+          in: query
+          name: medium
+          description: 'Returns objects that match the query and are of the specified medium or object type. Multiple values separated by the | operator. Case Sensitive. '
+        - schema:
+            type: boolean
+          in: query
+          name: hasImages
+          description: Returns objects that match the query and have images. Case sensitive.
+        - schema:
+            type: string
+            example: '"Europe", "France", "Paris", "China", "New York", etc.'
+          in: query
+          name: geoLocation
+          description: 'Returns objects that match the query and the specified geographic location. Multiple values separated by the | operator. Case Sensitive. '
+        - schema:
+            type: integer
+            example: 'dateBegin=1700&dateEnd=1800 for objects from 1700 A.D. to 1800 A.D., dateBegin=-100&dateEnd=100 for objects between 100 B.C. to 100 A.D.'
+          in: query
+          name: dateBegin and dateEnd
+          description: Returns objects that match the query and fall between the dateBegin and dateEnd parameters. You must use both dateBegin and dateEnd
 components:
-  schemas:
-    ErrorInfo:
-      type: object
-      properties:
-        url:
-          type: string
-        error:
-          type: string
-    UserProfileRequest:
-      type: object
-      properties:
-        firstname:
-          type: string
-        lastname:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-        street:
-          type: string
-        country:
-          type: string
-        mail:
-          type: string
-        telephoneNumber:
-          type: string
-        zipCode:
-          type: string
-        locale:
-          type: string
-        telephoneCountry:
-          type: string
-        currency:
-          type: string
-    TokenRequest:
-      type: object
-      properties:
-        uid:
-          type: string
-        phone:
-          type: string
-        refreshToken:
-          type: string
-        authorizationCode:
-          type: string
-        grantType:
-          type: string
-          enum:
-          - client_credentials
-          - authorization_code
-          - refresh_token
-        password:
-          type: string
-    TokenResponse:
-      type: object
-      properties:
-        accessToken:
-          type: string
-        refreshToken:
-          type: string
-        tokenType:
-          type: string
-        expires:
-          type: integer
-          format: int64
-    AuthorizationRequest:
-      required:
-      - phone
-      type: object
-      properties:
-        phone:
-          type: string
-    AuthorizationResponse:
-      type: object
-      properties:
-        expire:
-          type: integer
-          format: int64
-    UserProfileResponse:
-      type: object
-      properties:
-        uid:
-          type: string
-        firstname:
-          type: string
-        lastname:
-          type: string
-        gender:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-        street:
-          type: string
-        country:
-          type: string
-        mail:
-          type: string
-        telephoneNumber:
-          type: string
-        zipCode:
-          type: string
-        locale:
-          type: string
-        telephoneCountry:
-          type: string
-        currency:
-          type: string
-        idPhotoAvailable:
-          type: boolean
-        driverLicencePhotoAvailable:
-          type: boolean
-        profilePhotoAvailable:
-          type: boolean
+  schemas: {}
+  securitySchemes: {}

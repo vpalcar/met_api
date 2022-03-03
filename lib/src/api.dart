@@ -4,22 +4,20 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:goopti_api/src/serializers.dart';
-import 'package:goopti_api/src/auth/api_key_auth.dart';
-import 'package:goopti_api/src/auth/basic_auth.dart';
-import 'package:goopti_api/src/auth/bearer_auth.dart';
-import 'package:goopti_api/src/auth/oauth.dart';
-import 'package:goopti_api/src/api/api_controller_api.dart';
-import 'package:goopti_api/src/api/authentication_controller_api.dart';
-import 'package:goopti_api/src/api/profile_controller_api.dart';
+import 'package:met_api/src/serializers.dart';
+import 'package:met_api/src/auth/api_key_auth.dart';
+import 'package:met_api/src/auth/basic_auth.dart';
+import 'package:met_api/src/auth/bearer_auth.dart';
+import 'package:met_api/src/auth/oauth.dart';
+import 'package:met_api/src/api/default_api.dart';
 
-class GooptiApi {
-  static const String basePath = r'https://api.staging.goopti.com/user-service';
+class MetApi {
+  static const String basePath = r'https://collectionapi.metmuseum.org/public/collection/v1';
 
   final Dio dio;
   final Serializers serializers;
 
-  GooptiApi({
+  MetApi({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,
@@ -67,21 +65,9 @@ class GooptiApi {
     }
   }
 
-  /// Get ApiControllerApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get DefaultApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  ApiControllerApi getApiControllerApi() {
-    return ApiControllerApi(dio, serializers);
-  }
-
-  /// Get AuthenticationControllerApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  AuthenticationControllerApi getAuthenticationControllerApi() {
-    return AuthenticationControllerApi(dio, serializers);
-  }
-
-  /// Get ProfileControllerApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  ProfileControllerApi getProfileControllerApi() {
-    return ProfileControllerApi(dio, serializers);
+  DefaultApi getDefaultApi() {
+    return DefaultApi(dio, serializers);
   }
 }
